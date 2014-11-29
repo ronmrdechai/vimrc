@@ -1,0 +1,5 @@
+viminfo
+plugged/*
+undo/*
+
+!plugged/plug.vim
