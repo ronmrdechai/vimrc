@@ -164,6 +164,7 @@ Plug  'vim-scripts/applescript.vim', { 'for': 'applescript' }
 Plug  'vim-scripts/avr.vim',         { 'for': 'avr' }
 Plug  'vim-scripts/OmniCppComplete', { 'for': ['c', 'c++'] }
 Plug         'kien/ctrlp.vim',       {  'on': 'CtrlP' }
+Plug       'gentoo/gentoo-syntax'
 Plug          'sjl/gundo.vim',       {  'on': 'GundoToggle'}
 Plug   'scrooloose/nerdtree',        {  'on': 'NERDTreeToggle'}
 Plug        'wting/rust.vim'
