@@ -190,7 +190,9 @@ filetype plugin indent on
 syntax on
 
 " Set the colorscheme
-colorscheme Tomorrow-Night
+set background=dark
+let g:gruvbox_italic=0
+colorscheme gruvbox
 
 " Airline
 set laststatus=2
