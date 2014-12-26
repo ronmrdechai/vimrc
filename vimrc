@@ -183,7 +183,6 @@ Plug       'rodjek/vim-puppet'
 Plug        'mhinz/vim-signify'
 Plug        'tpope/vim-speeddating'
 Plug        'tpope/vim-surround'
-Plug 'chriskempson/vim-tomorrow-theme'
 call plug#end()
 
 " Enable syntax highlighting
