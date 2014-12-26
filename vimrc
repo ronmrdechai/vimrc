@@ -155,7 +155,7 @@ endwhile
 autocmd BufRead,BufNewFile *.asm set filetype=nasm
 
 " Tame keyword completion in Perl
-autocmd FileType perl set complete-=i
+autocmd FileType perl setlocal complete-=i
 
 " VimPlug for external packages
 runtime! plugged/plug.vim
