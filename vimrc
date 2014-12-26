@@ -196,7 +196,6 @@ colorscheme gruvbox
 
 " Airline
 set laststatus=2
-let g:airline_theme = 'tomorrow'
 let g:airline_powerline_fonts = 0
 let g:airline_detect_whitespace = 0
 let g:airline#extensions#hunks#enabled = 1
