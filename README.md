@@ -23,4 +23,4 @@ There aren't many things in here that aren't standard in most peoples' `.vimrc`,
 1. Executing the current line:<br>
    `<leader>ee` causes the current line or selection to be executed as VimScript. Useful if you're adding something to your `.vimrc` or writing a plugin.
 
-I also use `airline` as my status line, and `Tomorrow-Night` as my color scheme.
+I also use `airline` as my status line, and `Gruvbox` as my color scheme.
