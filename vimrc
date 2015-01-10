@@ -157,7 +157,11 @@ autocmd BufRead,BufNewFile *.asm set filetype=nasm
 " Tame keyword completion in Perl
 autocmd FileType perl setlocal complete-=i
 
-" VimPlug for external packages
+" Download VimPlug if it does not exist
+if empty(glob("~/.vim/plugged/plug.vim"))
+    execute '!curl -sfLo ~/.vim/plugged/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+" Use VimPlug for external packages
 runtime! plugged/plug.vim
 call plug#begin('~/.vim/plugged')
 Plug  'vim-scripts/applescript.vim', { 'for': 'applescript' }
