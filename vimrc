@@ -159,7 +159,9 @@ autocmd FileType perl setlocal complete-=i
 
 " Download VimPlug if it does not exist
 if empty(glob("~/.vim/plugged/plug.vim"))
-    execute '!curl -sfLo ~/.vim/plugged/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    silent !mkdir -p ~/.vim/plugged
+    silent !curl -sfLo ~/.vim/plugged/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
 endif
 " Use VimPlug for external packages
 runtime! plugged/plug.vim
