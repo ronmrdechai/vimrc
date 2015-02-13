@@ -2,16 +2,18 @@
 Yes, I've also moved from Emacs to Vim. It's just so much faster, and besides, knowing how to use both tools comes in handy a lot. This configuration is something I put together over time, adding and tweaking things as I see fit.
 
 ## Installation
-I use [Vim-Plug](https://github.com/junegunn/vim-plug) as my plugin manager. Just clone this repository into `~/.vim`, open vim, and type `:PlugInstall`.
+I use [Vim-Plug](https://github.com/junegunn/vim-plug) as my plugin manager. Just clone this repository into `~/.vim`, and open vim, plugin installation should happen automatically.
 
 ```
 $ git clone https://github.com/ronmrdechai/vimrc ~/.vim
-$ vim -c ':PlugInstall'
+$ vim
 ```
 
 ## Features
 There aren't many things in here that aren't standard in most peoples' `.vimrc`, but I do have a few things I really like:
 
+1. Automatic plugin installation:<br>
+   Vim will detect when VimPlug is missing and install it for you.
 1. Making the background show up properly in `tmux`:<br>
    Setting `t_ut` to nothing seems to make your background color show up properly in `tmux`.
 1. Changing the cursor shape in insert mode in iTerm2:<br>
