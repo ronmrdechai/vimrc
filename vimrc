@@ -65,7 +65,7 @@ if (exists('+colorcolumn'))
     hi ColorColumn ctermbg=9
 endif
 
-" Make vim show the background properly in TMUX
+" Make vim show the background properly in tmux
 if exists("$TMUX")
     set t_ut=
 endif
@@ -87,7 +87,7 @@ if system("uname -s") == "Darwin\n" && $TERM_PROGRAM == "iTerm.app"
     let &t_SI = TmuxEscape("\<Esc>]50;CursorShape=1\x7")
     let &t_EI = TmuxEscape("\<Esc>]50;CursorShape=0\x7")
 
-    " Set pastetoggle automatically when pasting
+    " Set paste automatically when pasting
     let &t_SI .= TmuxEscape("\<Esc>[?2004h")
     let &t_EI .= TmuxEscape("\<Esc>[?2004l")
     function PasteStart()
@@ -95,7 +95,7 @@ if system("uname -s") == "Darwin\n" && $TERM_PROGRAM == "iTerm.app"
         set paste
         return ""
     endfunction
-    inoremap <special> <expr> <Esc>[200~ PasteStart()
+    inoremap <special><expr><Esc>[200~ PasteStart()
 endif
 
 " GUI options in case I feel like opening MacVim
