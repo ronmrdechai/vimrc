@@ -143,11 +143,6 @@ nmap <silent>[l :lprevious<CR>
 nmap <silent>]b :bnext<CR>
 nmap <silent>[b :bprevious<CR>
 
-" Open the current directory with <leader>. and <leader>>
-" TODO: Maybe replace NERDTree with this
-nmap <silent><leader>. :Explore<CR>
-nmap <silent><leader>> :15Vexplore<CR>
-
 " Allow moving lines up or down with Ctrl-<Up>/<Down>
 nnoremap <silent><C-j> :m .+1<CR>==
 nnoremap <silent><C-k> :m .-2<CR>==
@@ -264,9 +259,13 @@ map <C-p> :CtrlP<CR>
 " Gundo
 map <silent><F3> :GundoToggle<CR>
 
-" NERDTree
-map <silent><F2> :NERDTreeToggle<CR>
-let NERDTreeDirArrows = 0
+" Netrw
+let g:netrw_winsize = -28
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_sort_sequence = '[\/]$,*'
+let g:netrw_browse_split = 4
+map <silent><F2> :Lexplore<CR>
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
