@@ -75,17 +75,15 @@ function TmuxEscape(string)
     if !exists("$TMUX")
         return a:string
     endif
-
     let tmux_start = "\<Esc>Ptmux;"
     let tmux_end   = "\<Esc>\\"
-
     return tmux_start 
                 \. substitute(a:string, "\<Esc>", "\<Esc>\<Esc>", 'g') 
                 \. tmux_end
 endfunction
 
-" Make vim change the cursor when in insert mode
 if system("uname -s") == "Darwin\n" && $TERM_PROGRAM == "iTerm.app"
+    " Make vim change the cursor when in insert mode
     let &t_SI = TmuxEscape("\<Esc>]50;CursorShape=1\x7")
     let &t_EI = TmuxEscape("\<Esc>]50;CursorShape=0\x7")
 endif
