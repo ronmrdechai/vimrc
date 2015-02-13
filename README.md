@@ -14,6 +14,10 @@ There aren't many things in here that aren't standard in most peoples' `.vimrc`,
 
 1. Making the background show up properly in `tmux`:<br>
    Setting `t_ut` to nothing seems to make your background color show up properly in `tmux`.
+1. Changing the cursor shape in insert mode in iTerm2:<br>
+   When in iTerm2, the cursor changes to a bar in the terminal.
+1. Setting `paste` automatically:<br>
+   Vim will set `paste` automatically when pasting in iTerm2.
 1. Quitting _MacVim_ on exit:<br>
    The _MacVim_ app likes staying open after you close all of its windows, I added little function to quit it after no other windows are open.
 1. Moving lines up and down:<br>
