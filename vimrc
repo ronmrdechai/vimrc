@@ -199,22 +199,21 @@ endif
 " Use VimPlug for external packages
 runtime! plugged/plug.vim
 call plug#begin('~/.vim/plugged')
-Plug  'vim-scripts/applescript.vim', { 'for': 'applescript' }
+Plug  'vim-scripts/applescript.vim'
+Plug    'jiangmiao/auto-pairs'
 Plug  'vim-scripts/avr.vim',         { 'for': 'avr' }
 Plug  'vim-scripts/OmniCppComplete', { 'for': ['c', 'c++'] }
 Plug         'kien/ctrlp.vim',       {  'on': 'CtrlP' }
 Plug       'gentoo/gentoo-syntax'
 Plug      'morhetz/gruvbox'
-Plug          'sjl/gundo.vim',       {  'on': 'GundoToggle'}
-Plug   'scrooloose/nerdtree',        {  'on': 'NERDTreeToggle'}
+Plug          'sjl/gundo.vim',       {  'on': 'GundoToggle' }
 Plug        'wting/rust.vim'
 Plug   'scrooloose/syntastic'
 Plug    'godlygeek/tabular'
-Plug   'majutsushi/tagbar'
-Plug       'tomtom/tcomment_vim'
+Plug   'majutsushi/tagbar',          {  'on': 'TagbarToggle' }
 Plug 'Keithbsmiley/tmux.vim'
 Plug        'bling/vim-airline'
-Plug     'Lokaltog/vim-easymotion'
+Plug        'tpope/vim-commentary'
 Plug        'tpope/vim-fugitive'
 Plug       'bruno-/vim-husk'
 Plug      'terryma/vim-multiple-cursors'
@@ -244,6 +243,7 @@ let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tagbar#enabled = 0
 let g:airline_left_sep = ' '
 let g:airline_left_alt_sep  = '|'
 let g:airline_right_sep = ' '
