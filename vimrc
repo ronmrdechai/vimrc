@@ -70,6 +70,16 @@ if exists("$TMUX")
     set t_ut=
 endif
 
+" Make vim change the cursor when in insert mode
+if system("uname -s") == "Darwin\n" && $TERM_PROGRAM == "iTerm.app"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    if exists("$TMUX")
+        let &t_SI = "\<Esc>Ptmux;\<Esc>" . &t_SI . "\<Esc>\\"
+        let &t_EI = "\<Esc>Ptmux;\<Esc>" . &t_EI . "\<Esc>\\"
+    endif
+endif
+
 " GUI options in case I feel like opening MacVim
 if has('gui_running')
     " Better gui font
