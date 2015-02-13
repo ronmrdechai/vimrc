@@ -286,17 +286,19 @@ command -nargs=* GenerateTags call GenerateTags(<f-args>)
 map <F10> :GenerateTags<CR>
 
 " Generate a hexdump of the current file or revert it
-let g:hexdump = 0
 function Hexdump()
-    if g:hexdump == 1 
+    if !exists('b:hexdump')
+        let b:hexdump = 0
+    endif
+    if b:hexdump == 1 
         set nobinary
         set eol
-        let g:hexdump = 0
+        let b:hexdump = 0
         execute "%!xxd -r"
     else
         set binary
         set noeol
-        let g:hexdump = 1
+        let b:hexdump = 1
         execute "%!xxd"
     endif
 endfunction
