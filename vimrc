@@ -59,6 +59,12 @@ set undoreload=10000
 " Move viminfo into .vim
 set viminfo+=n$HOME/.vim/viminfo
 
+" Highlight the 80th column
+if (exists('+colorcolumn'))
+    set colorcolumn=80
+    hi ColorColumn ctermbg=9
+endif
+
 " Make vim show the background properly in TMUX
 if exists("$TMUX")
     set t_ut=
