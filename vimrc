@@ -87,7 +87,7 @@ if system("uname -s") == "Darwin\n" && $TERM_PROGRAM == "iTerm.app"
     let &t_SI = TmuxEscape("\<Esc>]50;CursorShape=1\x7")
     let &t_EI = TmuxEscape("\<Esc>]50;CursorShape=0\x7")
 
-    " Set pastetoggle when pasting
+    " Set pastetoggle automatically when pasting
     let &t_SI .= TmuxEscape("\<Esc>[?2004h")
     let &t_EI .= TmuxEscape("\<Esc>[?2004l")
     function PasteStart()
