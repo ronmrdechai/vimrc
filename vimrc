@@ -70,6 +70,7 @@ if exists("$TMUX")
     set t_ut=
 endif
 
+" Wrap escape sequences when in tmux 
 function TmuxEscape(string)
     if !exists("$TMUX")
         return a:string
