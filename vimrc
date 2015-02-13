@@ -64,7 +64,7 @@ set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
 set grepformat=%f:%l:%c:%m,%f:%l:%m
 
 " Highlight the 80th column
-if (exists('+colorcolumn'))
+if exists('+colorcolumn')
     set colorcolumn=80
     hi ColorColumn ctermbg=9
 endif
