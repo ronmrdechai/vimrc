@@ -181,10 +181,6 @@ onoremap <silent><leader>b :<C-u>call
             \ search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)
             \\<Bar>\%^','bW')<CR>
 
-" Quickly open/source the vimrc file
-nmap <leader>ev :edit $MYVIMRC<CR>
-nmap <leader>sv :source $MYVIMRC<CR>
-
 " Execute current line or selected lines
 command -bar -range Execute silent <line1>,<line2>yank z
             \ | let @z = substitute(@z, '\n\s*\\', '', 'g') | @z
