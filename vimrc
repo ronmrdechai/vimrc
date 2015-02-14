@@ -1,4 +1,4 @@
-" This file is not compatible with vi
+" Disable vi compatibility
 set nocompatible
 
 " Support multi-byte character encodings
