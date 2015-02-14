@@ -75,16 +75,16 @@ if exists("$TMUX")
     set t_ut=
 endif
 
-" Wrap escape sequences when in tmux 
+" Wrap escape sequences when in tmux
 function TmuxEscape(string)
     if !exists("$TMUX")
         return a:string
     endif
     let tmux_start = "\<Esc>Ptmux;"
     let tmux_end   = "\<Esc>\\"
-    return tmux_start 
-                \. substitute(a:string, "\<Esc>", "\<Esc>\<Esc>", 'g') 
-                \. tmux_end
+    return tmux_start
+                \ . substitute(a:string, "\<Esc>", "\<Esc>\<Esc>", 'g')
+                \ . tmux_end
 endfunction
 
 if system("uname -s") == "Darwin\n" && $TERM_PROGRAM == "iTerm.app"
@@ -119,8 +119,8 @@ if has('gui_running')
     " Quit MacVim app on exit if we're running on OS X
     if system("uname -s") == "Darwin\n"
         function TerminateOnLeave()
-            let processes = 
-                \split(system("ps aux | grep -E '(Mac)?[V]im.*-g'"), '\n')
+            let processes =
+                \ split(system("ps aux | grep -E '(Mac)?[V]im.*-g'"), '\n')
             if len(processes) == 1
                 macaction terminate:
             endif
@@ -189,16 +189,16 @@ nnoremap <leader>p :set invpaste paste?<CR>
 command WRITE :w !sudo tee > /dev/null %
 
 " Map function keys to <leader>#
-let i=0 
-while i<=9 
+let i=0
+while i<=9
     exe 'nmap <leader>' . i . ' <F' . i . '>'
     let i+=1
-endwhile 
+endwhile
 let i=0
 while i<=6
     exe 'nmap <leader><leader>' . i . ' <F1' . i . '>'
     let i+=1
-endwhile 
+endwhile
 
 " Open files with specific syntax
 autocmd BufRead,BufNewFile *.asm set filetype=nasm
@@ -294,7 +294,7 @@ function Hexdump()
     if !exists('b:hexdump')
         let b:hexdump = 0
     endif
-    if b:hexdump == 1 
+    if b:hexdump == 1
         set nobinary
         set eol
         let b:hexdump = 0
