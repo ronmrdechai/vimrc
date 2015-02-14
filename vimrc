@@ -159,17 +159,26 @@ vnoremap <silent><C-j> :m '>+1<CR>gv=gv
 vnoremap <silent><C-k> :m '<-2<CR>gv=gv
 
 " CamelCase motions:
-nnoremap <silent><leader>w :<C-u>call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
-nnoremap <silent><leader>b :<C-u>call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
-onoremap <silent><leader>w :<C-u>call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
-onoremap <silent><leader>b :<C-u>call search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
+nnoremap <silent><leader>w :<C-u>call
+            \ search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)
+            \\<Bar>\%$','W')<CR>
+nnoremap <silent><leader>b :<C-u>call
+            \ search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)
+            \\<Bar>\%^','bW')<CR>
+onoremap <silent><leader>w :<C-u>call
+            \ search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)
+            \\<Bar>\%$','W')<CR>
+onoremap <silent><leader>b :<C-u>call
+            \ search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)
+            \\<Bar>\%^','bW')<CR>
 
 " Quickly open/source the vimrc file
 nmap <leader>ev :edit $MYVIMRC<CR>
 nmap <leader>sv :source $MYVIMRC<CR>
 
 " Execute current line or selected lines
-command -bar -range Execute silent <line1>,<line2>yank z | let @z = substitute(@z, '\n\s*\\', '', 'g') | @z
+command -bar -range Execute silent <line1>,<line2>yank z
+            \ | let @z = substitute(@z, '\n\s*\\', '', 'g') | @z
 nnoremap <silent><leader>ee :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
 xnoremap <silent><leader>ee :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
 
@@ -200,7 +209,8 @@ autocmd FileType perl setlocal complete-=i
 " Download VimPlug if it does not exist
 if empty(glob("~/.vim/plugged/plug.vim"))
     silent !mkdir -p ~/.vim/plugged
-    silent !curl -sfLo ~/.vim/plugged/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim
+    silent !curl -sfLo ~/.vim/plugged/plug.vim
+                \ https://raw.github.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall
 endif
 " Use VimPlug for external packages
