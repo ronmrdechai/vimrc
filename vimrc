@@ -144,6 +144,15 @@ let mapleader=" "
 " General mappings
 nmap ZA :qa<CR>
 
+" Readline-like command-line mode
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+
 " Next and previous buffers and locations
 nmap <silent>]l :lnext<CR>
 nmap <silent>[l :lprevious<CR>
