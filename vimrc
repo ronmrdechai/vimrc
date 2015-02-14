@@ -272,14 +272,8 @@ let g:ctrlp_working_path_mode = 'ra'
 " Map ctrl-p to CtrlP for VimPlug
 map <C-p> :CtrlP<CR>
 
-" Gundo
-map <silent><F3> :GundoToggle<CR>
-
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
-
-" Tabar
-map <silent><F4> :TagbarToggle<CR>
 
 " Generate tags for specified directory
 function GenerateTags(...)
