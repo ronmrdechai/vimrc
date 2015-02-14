@@ -218,25 +218,20 @@ runtime! plugged/plug.vim
 call plug#begin('~/.vim/plugged')
 Plug  'vim-scripts/applescript.vim'
 Plug    'jiangmiao/auto-pairs'
-Plug  'vim-scripts/avr.vim',         { 'for': 'avr' }
-Plug  'vim-scripts/OmniCppComplete', { 'for': ['c', 'c++'] }
-Plug         'kien/ctrlp.vim',       {  'on': 'CtrlP' }
+Plug  'vim-scripts/avr.vim'
+Plug         'kien/ctrlp.vim',      { 'on': 'CtrlP' }
 Plug       'gentoo/gentoo-syntax'
 Plug      'morhetz/gruvbox'
-Plug          'sjl/gundo.vim',       {  'on': 'GundoToggle' }
 Plug        'wting/rust.vim'
 Plug   'scrooloose/syntastic'
-Plug    'godlygeek/tabular'
-Plug   'majutsushi/tagbar',          {  'on': 'TagbarToggle' }
+Plug    'godlygeek/tabular',        { 'on': 'Tabularize' }
 Plug 'Keithbsmiley/tmux.vim'
 Plug        'bling/vim-airline'
 Plug        'tpope/vim-commentary'
 Plug        'tpope/vim-fugitive'
-Plug       'bruno-/vim-husk'
 Plug      'terryma/vim-multiple-cursors'
 Plug       'rodjek/vim-puppet'
 Plug        'mhinz/vim-signify'
-Plug        'tpope/vim-speeddating'
 Plug        'tpope/vim-surround'
 call plug#end()
 
