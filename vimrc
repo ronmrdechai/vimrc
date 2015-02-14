@@ -87,7 +87,7 @@ function TmuxEscape(string)
                 \ . tmux_end
 endfunction
 
-if system("uname -s") == "Darwin\n" && $TERM_PROGRAM == "iTerm.app"
+if has('mac') && $TERM_PROGRAM == "iTerm.app"
     " Make vim change the cursor when in insert mode
     let &t_SI = TmuxEscape("\<Esc>]50;CursorShape=1\x7")
     let &t_EI = TmuxEscape("\<Esc>]50;CursorShape=0\x7")
@@ -117,7 +117,7 @@ if has('gui_running')
     " And make it transparent
     set transparency=5
     " Quit MacVim app on exit if we're running on OS X
-    if system("uname -s") == "Darwin\n"
+    if has('mac')
         function TerminateOnLeave()
             let processes =
                 \ split(system("ps aux | grep -E '(Mac)?[V]im.*-g'"), '\n')
