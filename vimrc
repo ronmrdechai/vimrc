@@ -191,7 +191,7 @@ xnoremap <silent><leader>e  :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
 nnoremap <leader>p :set invpaste paste?<CR>
 
 " Write to file as root with "WRITE"
-command WRITE :w !sudo tee > /dev/null %
+command WRITE %!sudo tee > /dev/null %
 
 " Map function keys to <leader>#
 let i=0
