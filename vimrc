@@ -63,9 +63,10 @@ set viminfo+=n$HOME/.vim/viminfo
 set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
 set grepformat=%f:%l:%c:%m,%f:%l:%m
 
-" Highlight the 80th column
+" Highlight the 81st column
 if exists('+colorcolumn')
-    set colorcolumn=80
+    set textwidth=80
+    set colorcolumn=+1
     hi ColorColumn ctermbg=9
 endif
 
