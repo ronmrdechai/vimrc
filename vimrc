@@ -129,8 +129,14 @@ if has('gui_running')
     endif
 endif
 
-" Disable creating of ".netrwhist"
+" netrw options
+let g:netrw_winsize = -28
+let g:netrw_liststyle = 3
+let g:netrw_sort_sequence = '[\/]$,*'
+let g:netrw_browse_split = 4
 let g:netrw_dirhistmax = 0
+let g:netrw_banner = 0
+map <silent><F2> :Lexplore<CR>
 
 " Set <leader> to space, it's much easier to mash this way
 let mapleader=" "
@@ -259,14 +265,6 @@ map <C-p> :CtrlP<CR>
 
 " Gundo
 map <silent><F3> :GundoToggle<CR>
-
-" Netrw
-let g:netrw_winsize = -28
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_sort_sequence = '[\/]$,*'
-let g:netrw_browse_split = 4
-map <silent><F2> :Lexplore<CR>
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
