@@ -90,20 +90,27 @@ function TmuxEscape(string)
                 \ . tmux_end
 endfunction
 
-if has('mac') && $TERM_PROGRAM == "iTerm.app"
-    " Make vim change the cursor when in insert mode
+" Make vim change the cursor when in insert mode in iTerm2 and Konsole
+if $TERM_PROGRAM == "iTerm.app" || exists("$KONSOLE_DBUS_SERVICE")
     let &t_SI = TmuxEscape("\<Esc>]50;CursorShape=1\x7")
     let &t_EI = TmuxEscape("\<Esc>]50;CursorShape=0\x7")
+endif
 
-    " Set paste automatically when pasting
-    let &t_SI .= TmuxEscape("\<Esc>[?2004h")
-    let &t_EI .= TmuxEscape("\<Esc>[?2004l")
-    function PasteStart()
+" TODO: Find a better condition for this
+if has('unix')
+    " Enable bracketed paste mode when entering vim
+    let &t_ti .= "\<Esc>[?2004h"
+    let &t_te .= "\<Esc>[?2004l"
+    function PasteStart(ret)
         set pastetoggle=<Esc>[201~
         set paste
-        return ""
+        return a:ret
     endfunction
-    inoremap <special><expr><Esc>[200~ PasteStart()
+    " ':set paste' automatically when pasting
+    inoremap <special><expr><Esc>[200~ PasteStart("")
+    noremap  <special><expr><Esc>[200~ PasteStart("0i")
+    cnoremap <special><expr><Esc>[200~ ""
+    cnoremap <special><expr><Esc>[201~ ""
 endif
 
 " GUI options in case I feel like opening MacVim
