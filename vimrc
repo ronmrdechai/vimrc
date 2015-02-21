@@ -62,9 +62,14 @@ set undoreload=10000
 " Move viminfo into .vim
 set viminfo+=n$HOME/.vim/viminfo
 
-" Use ag for grepping
-set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
-set grepformat=%f:%l:%c:%m,%f:%l:%m
+" Use ag/ack for grepping when available
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+elseif executable('ack')
+    set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 
 " Highlight the 81st column
 if exists('+colorcolumn')
