@@ -19,8 +19,11 @@ set foldlevel=1
 " Make backspace work properly
 set backspace=indent,eol,start
 
-" Echo command
+" Statusbar options
+" TODO: Make a nice statusbar
 set showcmd
+set ruler
+set laststatus=2
 
 " Better searching
 set hlsearch
