@@ -213,9 +213,6 @@ xnoremap <silent><leader>e  :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
 " Toggle paste mode with <leader>p
 nnoremap <leader>p :set invpaste paste?<CR>
 
-" Write to file as root with "WRITE"
-command WRITE %!sudo tee > /dev/null %
-
 " Map function keys to <leader>#
 let i=0
 while i<=9
@@ -297,6 +294,12 @@ map <C-p> :CtrlP<CR>
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
+
+" Write to file as root with "WRITE"
+command WRITE %!sudo tee > /dev/null %
+
+" Call '!git' on the current file
+command -nargs=* G !git <args> %
 
 " Generate tags for specified directory
 function GenerateTags(...)
