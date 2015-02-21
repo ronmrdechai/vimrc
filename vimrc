@@ -276,8 +276,17 @@ let g:syntastic_always_populate_loc_list = 1
 command WRITE %!sudo tee > /dev/null %
 
 " Call '!git' more easily
-command -nargs=* G  !git <args> %
-command -nargs=* G! !git <args>
+function CmdGit(bang, ...)
+    let l:cwd = getcwd()
+    cd %:p:h
+    if a:bang
+        execute "!git " . join(a:000, " ")
+    else
+        execute "!git " . join(a:000, " ") . " %"
+    endif
+    execute 'cd' fnameescape(l:cwd)
+endfunction
+command -nargs=* -bang G call CmdGit(<bang>0, <f-args>)
 
 " Generate tags for specified directory
 function GenerateTags(...)
