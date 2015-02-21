@@ -284,7 +284,7 @@ function GenerateTags(...)
     endif
     execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q " . dir
 endfunction
-command -nargs=* GenerateTags call GenerateTags(<f-args>)
+command -nargs=? GenerateTags call GenerateTags(<f-args>)
 map <F10> :GenerateTags<CR>
 
 " Generate a hexdump of the current file or revert it
