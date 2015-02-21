@@ -244,14 +244,11 @@ call plug#begin('~/.vim/plugged')
 Plug  'vim-scripts/applescript.vim'
 Plug    'jiangmiao/auto-pairs'
 Plug  'vim-scripts/avr.vim'
-Plug         'kien/ctrlp.vim',      { 'on': 'CtrlP' }
-Plug       'gentoo/gentoo-syntax'
 Plug      'morhetz/gruvbox'
 Plug        'wting/rust.vim'
 Plug   'scrooloose/syntastic'
 Plug    'godlygeek/tabular',        { 'on': 'Tabularize' }
 Plug 'Keithbsmiley/tmux.vim'
-Plug        'bling/vim-airline'
 Plug        'tpope/vim-commentary'
 Plug        'tpope/vim-fugitive'
 Plug      'terryma/vim-multiple-cursors'
@@ -268,29 +265,6 @@ syntax on
 set background=dark
 let g:gruvbox_italic=0
 colorscheme gruvbox
-
-" Airline
-set laststatus=2
-let g:airline_powerline_fonts = 0
-let g:airline#extensions#hunks#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tagbar#enabled = 0
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep  = '|'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '|'
-
-" CtrlP
-let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-" Map ctrl-p to CtrlP for VimPlug
-map <C-p> :CtrlP<CR>
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
