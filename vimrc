@@ -275,8 +275,9 @@ let g:syntastic_always_populate_loc_list = 1
 " Write to file as root with "WRITE"
 command WRITE %!sudo tee > /dev/null %
 
-" Call '!git' on the current file
-command -nargs=* G !git <args> %
+" Call '!git' more easily
+command -nargs=* G  !git <args> %
+command -nargs=* G! !git <args>
 
 " Generate tags for specified directory
 function GenerateTags(...)
