@@ -281,8 +281,6 @@ function CmdGit(bang, ...)
     cd %:p:h
     let l:err = system("git " . join(a:000, " ") .
                 \ (a:bang ? "" : " " . expand("%:t")))
-    echo l:err
-    return
     if l:err != ""
         echo l:err
         call input("")
