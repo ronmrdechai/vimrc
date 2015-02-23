@@ -290,6 +290,24 @@ function CmdGit(bang, ...)
 endfunction
 command -nargs=* -bang G call CmdGit(<bang>0, <f-args>)
 
+" Set g:git_branch to the current git branch
+function SetGitBranch()
+    let l:cwd = getcwd()
+    cd %:p:h
+    let l:branch = system("git rev-parse --abbrev-ref HEAD 2> /dev/null")
+    if v:shell_error
+        let l:branch = ""
+    endif
+    let l:branch = substitute(l:branch, '\n$', '\1', '')
+    if l:branch == "HEAD"
+        let l:branch = system("git rev-parse --short HEAD 2> /dev/null")
+        let l:branch = substitute(l:branch, '\n$', '\1', '')
+    endif
+    execute 'cd' fnameescape(l:cwd)
+    let b:git_branch = l:branch
+endfunction
+autocmd BufEnter * call SetGitBranch()
+
 " Generate tags for specified directory
 function GenerateTags(...)
     if a:0 == 0
