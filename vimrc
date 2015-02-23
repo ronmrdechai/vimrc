@@ -279,10 +279,10 @@ command WRITE %!sudo tee > /dev/null %
 function CmdGit(bang, ...)
     let l:cwd = getcwd()
     cd %:p:h
-    let l:err = system("git " . join(a:000, " ") .
+    let l:res = system("git " . join(a:000, " ") .
                 \ (a:bang ? "" : " " . expand("%:t")))
-    if l:err != ""
-        echo l:err
+    if l:res != ""
+        echo l:res
         call input("")
     endif
     edit!
