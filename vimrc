@@ -252,8 +252,6 @@ Plug   'scrooloose/syntastic'
 Plug    'godlygeek/tabular',        { 'on': 'Tabularize' }
 Plug 'Keithbsmiley/tmux.vim'
 Plug        'tpope/vim-commentary'
-Plug        'tpope/vim-fugitive'
-Plug      'terryma/vim-multiple-cursors'
 Plug       'rodjek/vim-puppet'
 Plug        'mhinz/vim-signify'
 Plug        'tpope/vim-surround'
