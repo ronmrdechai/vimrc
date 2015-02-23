@@ -279,11 +279,15 @@ command WRITE %!sudo tee > /dev/null %
 function CmdGit(bang, ...)
     let l:cwd = getcwd()
     cd %:p:h
-    if a:bang
-        execute "!git " . join(a:000, " ")
-    else
-        execute "!git " . join(a:000, " ") . " %"
+    let l:err = system("git " . join(a:000, " ") .
+                \ (a:bang ? "" : " " . expand("%:t")))
+    echo l:err
+    return
+    if l:err != ""
+        echo l:err
+        call input("")
     endif
+    edit!
     execute 'cd' fnameescape(l:cwd)
 endfunction
 command -nargs=* -bang G call CmdGit(<bang>0, <f-args>)
