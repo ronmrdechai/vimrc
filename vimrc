@@ -319,4 +319,3 @@ function Hexdump()
 endfunction
 command Hexdump call Hexdump()
 map <F9> :Hexdump<CR>
-
