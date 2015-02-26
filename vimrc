@@ -274,9 +274,10 @@ command WRITE %!sudo tee > /dev/null %
 
 " Call '!git' more easily
 function CmdGit(bang, ...)
+    let l:env = "env GIT_EDITOR=true "
     let l:cwd = getcwd()
     cd %:p:h
-    let l:res = system("git " . join(a:000, " ") .
+    let l:res = system(l:env . "git " . join(a:000, " ") .
                 \ (a:bang ? "" : " " . expand("%:t")))
     if l:res != ""
         echo l:res
