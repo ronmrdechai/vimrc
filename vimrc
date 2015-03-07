@@ -347,7 +347,6 @@ function GitCommit()
         call system('git diff ' . l:orig_buf_name . ' ' . l:diff_buf_name . ' > ' . l:tmp_patch_name)
         call system('sed -i "" "1,4d" ' . l:tmp_patch_name)
         call system('git diff ' . expand('%') . ' | head -n4 | cat - ' . l:tmp_patch_name . ' > ' . l:patch_name)
-        call system('git apply --recount --cached ' . l:patch_name)
         execute 'cd' fnameescape(l:cwd)
         Gdf
         execute 'G! apply --cached --recount' l:patch_name
