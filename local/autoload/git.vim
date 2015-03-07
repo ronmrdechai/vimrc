@@ -28,6 +28,7 @@ function git#diff()
     let &ft=l:ft
     set nomodified
     normal zR
+    wincmd p
     call setpos('.', l:cur)
     call winrestview(l:winview)
     execute 'cd' fnameescape(l:cwd)
