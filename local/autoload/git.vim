@@ -46,8 +46,8 @@ function git#togglediff()
     endif
 endfunction
 
-" Commit changes added in the GitDiff window
-function git#commit()
+" Stage changes added in the GitDiff window
+function git#stage()
     if exists('b:git_diff_buf')
         let l:cwd = getcwd()
         cd %:p:h
@@ -72,6 +72,8 @@ function git#commit()
         Gdf
         execute 'G! apply --cached --recount' l:patch_name
     else
-        echoerr 'No diff buffer open'
+        echohl ErrorMsg
+        echom 'Error: No diff buffer open'
+        echohl None
     endif
 endfunction
