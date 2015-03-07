@@ -291,11 +291,13 @@ function GitDiff()
     let l:winview = winsaveview()
     let l:ft = &ft
     cd %:p:h
-    vnew
+    if filereadable("/tmp/" . expand("%:t") . ".diff")
+        call delete("/tmp/" . expand("%:t") . ".diff")
+    endif
+    silent! vnew /tmp/%:t.diff
     let l:bufnum = bufnr('%')
-    r !git show HEAD:#
+    .!git cat-file -p HEAD:#
     let &ft=l:ft
-    set readonly
     set nomodified
     windo diffthis
     normal zR
@@ -307,9 +309,9 @@ endfunction
 
 " Toggle the GitDiff split
 function ToggleGitDiff()
-   if exists('b:git_diff_buf')
-       execute 'bdelete!' b:git_diff_buf
-       unlet b:git_diff_buf
+    if exists('b:git_diff_buf')
+        execute 'bdelete!' b:git_diff_buf
+        unlet b:git_diff_buf
     else
        let b:git_diff_buf = GitDiff()
     endif
@@ -317,6 +319,7 @@ endfunction
 
 command -nargs=* -bang G   call CmdGit(<bang>0, <f-args>)
 command -nargs=* -bang Git call CmdGit(<bang>0, <f-args>)
+command Gdf     call ToggleGitDiff()
 command GitDiff call ToggleGitDiff()
 
 " Set b:git_branch to the current git branch
