@@ -4,7 +4,7 @@ function git#getpath(file)
     execute 'cd' fnamemodify(expand(a:file), ':p:h')
     let l:git_root = system('git rev-parse --show-toplevel')
     let l:git_root = substitute(l:git_root, '\n$', '', '')
-    let l:path = substitute(expand(a:file), fnameescape(l:git_root . '/'), '', '')
+    let l:path = substitute(fnamemodify(expand(a:file), ':p'), fnameescape(l:git_root . '/'), '', '')
     execute 'cd' fnameescape(l:cwd)
     return l:path
 endfunction
