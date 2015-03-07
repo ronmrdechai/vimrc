@@ -272,14 +272,13 @@ command WRITE %!sudo tee > /dev/null %
 
 " Call '!git' more easily
 function CmdGit(bang, ...)
-    let l:env = "env GIT_EDITOR=true "
+    let l:env = "env GIT_EDITOR=true GIT_PAGER=cat "
     let l:cwd = getcwd()
     cd %:p:h
     let l:res = system(l:env . "git " . join(a:000, " ") .
                 \ (a:bang ? "" : " " . expand("%:t")))
     if l:res != ""
         echo l:res
-        call input("")
     endif
     edit!
     execute 'cd' fnameescape(l:cwd)
