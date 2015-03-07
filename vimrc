@@ -243,7 +243,6 @@ endif
 " Use VimPlug for external packages
 runtime! plugged/plug.vim
 call plug#begin('~/.vim/plugged')
-Plug  'vim-scripts/applescript.vim'
 Plug    'jiangmiao/auto-pairs'
 Plug  'vim-scripts/avr.vim'
 Plug      'morhetz/gruvbox'
@@ -253,7 +252,6 @@ Plug    'godlygeek/tabular',        { 'on': 'Tabularize' }
 Plug 'Keithbsmiley/tmux.vim'
 Plug        'tpope/vim-commentary'
 Plug       'rodjek/vim-puppet'
-Plug        'mhinz/vim-signify'
 Plug        'tpope/vim-surround'
 call plug#end()
 
