@@ -4,7 +4,8 @@ function git#getpath(file)
     execute 'cd' fnamemodify(expand(a:file), ':p:h')
     let l:git_root = system('git rev-parse --show-toplevel')
     let l:git_root = substitute(l:git_root, '\n$', '', '')
-    let l:path = substitute(fnamemodify(expand(a:file), ':p'), fnameescape(l:git_root . '/'), '', '')
+    let l:path = substitute(fnamemodify(expand(a:file), ':p'),
+                \fnameescape(l:git_root . '/'), '', '')
     execute 'cd' fnameescape(l:cwd)
     return l:path
 endfunction
@@ -59,11 +60,14 @@ function git#commit()
         endif
         let l:git_root = system('git rev-parse --show-toplevel')
         let l:git_root = substitute(l:git_root, '\n$', '', '')
-        call system('git cat-file -p HEAD:' . git#getpath('%') . ' > ' . l:orig_buf_name)
+        call system('git cat-file -p HEAD:' . git#getpath('%') . ' > '
+                    \. l:orig_buf_name)
         windo write
-        call system('git diff ' . l:orig_buf_name . ' ' . l:diff_buf_name . ' > ' . l:tmp_patch_name)
+        call system('git diff ' . l:orig_buf_name . ' ' . l:diff_buf_name
+                    \. ' > ' . l:tmp_patch_name)
         call system('sed -i "" "1,4d" ' . l:tmp_patch_name)
-        call system('git diff ' . expand('%') . ' | head -n4 | cat - ' . l:tmp_patch_name . ' > ' . l:patch_name)
+        call system('git diff ' . expand('%') . ' | head -n4 | cat - '
+                    \. l:tmp_patch_name . ' > ' . l:patch_name)
         execute 'cd' fnameescape(l:cwd)
         Gdf
         execute 'G! apply --cached --recount' l:patch_name
