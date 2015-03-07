@@ -283,9 +283,43 @@ function CmdGit(bang, ...)
     edit!
     execute 'cd' fnameescape(l:cwd)
 endfunction
-command -nargs=* -bang G call CmdGit(<bang>0, <f-args>)
 
-" Set g:git_branch to the current git branch
+" Show changes in git
+function GitDiff()
+    let l:cwd = getcwd()
+    let l:cur = getpos('.')
+    let l:winview = winsaveview()
+    let l:ft = &ft
+    cd %:p:h
+    vnew
+    let l:bufnum = bufnr('%')
+    r !git show HEAD:#
+    let &ft=l:ft
+    set readonly
+    set nomodified
+    windo diffthis
+    normal zR
+    call setpos('.', l:cur)
+    call winrestview(l:winview)
+    execute 'cd' fnameescape(l:cwd)
+    return l:bufnum
+endfunction
+
+" Toggle the GitDiff split
+function ToggleGitDiff()
+   if exists('b:git_diff_buf')
+       execute 'bdelete!' b:git_diff_buf
+       unlet b:git_diff_buf
+    else
+       let b:git_diff_buf = GitDiff()
+    endif
+endfunction
+
+command -nargs=* -bang G   call CmdGit(<bang>0, <f-args>)
+command -nargs=* -bang Git call CmdGit(<bang>0, <f-args>)
+command GitDiff call ToggleGitDiff()
+
+" Set b:git_branch to the current git branch
 function SetGitBranch()
     let l:cwd = getcwd()
     cd %:p:h
