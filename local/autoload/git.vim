@@ -1,19 +1,32 @@
+" Return the path of file relative to the git root
+function git#getpath(file)
+    let l:cwd = getcwd()
+    execute 'cd' fnamemodify(expand(a:file), ':p:h')
+    let l:git_root = system('git rev-parse --show-toplevel')
+    let l:git_root = substitute(l:git_root, '\n$', '', '')
+    let l:path = substitute(expand(a:file), fnameescape(l:git_root . '/'), '', '')
+    execute 'cd' fnameescape(l:cwd)
+    return l:path
+endfunction
+
 " Show changes in git
 function git#diff()
     let l:cwd = getcwd()
     let l:cur = getpos('.')
     let l:winview = winsaveview()
+    let l:path = git#getpath('%:p')
     let l:ft = &ft
     cd %:p:h
     if filereadable("/tmp/" . expand("%:t") . ".diff")
         call delete("/tmp/" . expand("%:t") . ".diff")
     endif
+    diffthis
     silent! vnew /tmp/%:t.diff
     let l:bufnum = bufnr('%')
-    .!git cat-file -p HEAD:#
+    execute '.!git cat-file -p HEAD:' . l:path
+    diffthis
     let &ft=l:ft
     set nomodified
-    windo diffthis
     normal zR
     call setpos('.', l:cur)
     call winrestview(l:winview)
@@ -29,17 +42,6 @@ function git#togglediff()
     else
        let b:git_diff_buf = git#diff()
     endif
-endfunction
-
-" Return the path of file relative to the git root
-function git#getpath(file)
-    let l:cwd = getcwd()
-    execute 'cd' fnamemodify(expand(a:file), ':p:h')
-    let l:git_root = system('git rev-parse --show-toplevel')
-    let l:git_root = substitute(l:git_root, '\n$', '', '')
-    let l:path = substitute(expand(a:file), fnameescape(l:git_root . '/'), '', '')
-    execute 'cd' fnameescape(l:cwd)
-    return l:path
 endfunction
 
 " Commit changes added in the GitDiff window
