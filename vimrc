@@ -359,6 +359,8 @@ command -nargs=* -bang G   call CmdGit(<bang>0, <f-args>)
 command -nargs=* -bang Git call CmdGit(<bang>0, <f-args>)
 command Gdf     call ToggleGitDiff()
 command GitDiff call ToggleGitDiff()
+command Gci       call GitCommit()
+command GitCommit call GitCommit()
 
 " Set b:git_branch to the current git branch
 function SetGitBranch()
