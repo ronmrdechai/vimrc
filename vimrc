@@ -243,7 +243,6 @@ endif
 " Use VimPlug for external packages
 runtime! plugged/plug.vim
 call plug#begin('~/.vim/plugged')
-Plug    'jiangmiao/auto-pairs'
 Plug  'vim-scripts/avr.vim'
 Plug      'morhetz/gruvbox'
 Plug        'wting/rust.vim'
