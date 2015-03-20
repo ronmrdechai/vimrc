@@ -203,8 +203,8 @@ nnoremap <leader>f :find *
 nnoremap <leader>s :vert sfind *
 nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>S :vert sfind <C-R>=expand('%:h').'/*'<CR>
-nnoremap <leader>b :buffer <C-z><S-Tab>
-nnoremap <leader>B :vert sbuffer <C-z><S-Tab>
+nnoremap <leader>u :buffer <C-z><S-Tab>
+nnoremap <leader>U :vert sbuffer <C-z><S-Tab>
 
 " Execute current line or selected lines
 command -bar -range Execute silent <line1>,<line2>yank z
