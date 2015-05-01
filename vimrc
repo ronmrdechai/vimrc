@@ -167,9 +167,11 @@ cnoremap <C-N> <Down>
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 
-" Next and previous buffers and locations
+" Next and previous buffers, locations, and quickfix
 nmap <silent>]l :lnext<CR>
 nmap <silent>[l :lprevious<CR>
+nmap <silent>]c :cnext<CR>
+nmap <silent>[c :cprevious<CR>
 nmap <silent>]b :bnext<CR>
 nmap <silent>[b :bprevious<CR>
 
