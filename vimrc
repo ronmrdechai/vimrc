@@ -238,6 +238,9 @@ autocmd BufRead,BufNewFile *.asm set filetype=nasm
 " Tame keyword completion in Perl
 autocmd FileType perl setlocal complete-=i
 
+" Spell check for git commit messages
+autocmd FileType gitcommit setlocal spell
+
 " Download VimPlug if it does not exist
 if empty(glob("~/.vim/plugged/plug.vim"))
     silent !mkdir -p ~/.vim/plugged
