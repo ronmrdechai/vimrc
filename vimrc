@@ -57,6 +57,9 @@ set undofile
 set undodir=$HOME/.vim/undo
 set undolevels=1000
 set undoreload=10000
+if !isdirectory(&undodir)
+    silent call mkdir(&undodir, "p")
+endif
 
 " Move viminfo into .vim
 set viminfo+=n$HOME/.vim/viminfo
