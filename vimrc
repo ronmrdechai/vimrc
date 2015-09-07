@@ -318,31 +318,16 @@ autocmd BufEnter * call SetGitBranch()
 " Generate tags for specified directory
 function GenerateTags(...)
     if a:0 == 0
-        let dir = '.'
+        let l:dir = '.'
     else
-        let dir = a:1
+        let l:dir = a:1
     endif
-    execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q " . dir
+    if executable("exctags")
+        let l:exe = "exctags"
+    else
+        let l:exe = "ctags"
+    endif
+    execute "!" . l:exe . " -R --c++-kinds=+p --fields=+iaS --extra=+q " . l:dir
 endfunction
 command -nargs=? GenerateTags call GenerateTags(<f-args>)
 map <F10> :GenerateTags<CR>
-
-" Generate a hexdump of the current file or revert it
-function Hexdump()
-    if !exists('b:hexdump')
-        let b:hexdump = 0
-    endif
-    if b:hexdump == 1
-        set nobinary
-        set eol
-        let b:hexdump = 0
-        execute "%!xxd -r"
-    else
-        set binary
-        set noeol
-        let b:hexdump = 1
-        execute "%!xxd"
-    endif
-endfunction
-command Hexdump call Hexdump()
-map <F9> :Hexdump<CR>
