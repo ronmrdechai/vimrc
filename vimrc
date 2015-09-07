@@ -120,32 +120,6 @@ if has('unix')
     cnoremap <special><expr><Esc>[201~ ""
 endif
 
-" GUI options in case I feel like opening MacVim
-if has('gui_running')
-    " Better gui font
-    silent! set guifont=Monospace:h10
-    if &guifont != 'Monospace:h10'
-        set guifont=Monaco:h10
-    endif
-    " Remove the scrollbar
-    set guioptions-=r
-    " Make the window bigger
-    set lines=50 columns=90
-    " And make it transparent
-    set transparency=5
-    " Quit MacVim app on exit if we're running on OS X
-    if has('mac')
-        function TerminateOnLeave()
-            let processes =
-                \ split(system("ps aux | grep -E '(Mac)?[V]im.*-g'"), '\n')
-            if len(processes) == 1
-                macaction terminate:
-            endif
-        endfunction
-        autocmd VimLeave * call TerminateOnLeave()
-    endif
-endif
-
 " netrw options
 let g:netrw_winsize = -28
 let g:netrw_liststyle = 3
