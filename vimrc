@@ -214,8 +214,8 @@ nnoremap <leader>U :vert sbuffer <C-z><S-Tab>
 " Execute current line or selected lines
 command -bar -range Execute silent <line1>,<line2>yank z
             \ | let @z = substitute(@z, '\n\s*\\', '', 'g') | @z
-nnoremap <silent><leader>ee :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
-xnoremap <silent><leader>e  :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
+nnoremap <silent>g!! :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
+xnoremap <silent>g!  :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
 
 " Toggle paste mode with <leader>p
 nnoremap <leader>p :set invpaste paste?<CR>
