@@ -37,9 +37,6 @@ autocmd InsertLeave * :set relativenumber
 " Show matching brackets
 set showmatch
 
-" Enable the use of the mouse
-set mouse=a
-
 " Hide closed buffers
 set hidden
 
