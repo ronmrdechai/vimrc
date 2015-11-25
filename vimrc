@@ -194,12 +194,12 @@ nnoremap <leader>p :set invpaste paste?<CR>
 " Map function keys to <leader>#
 let i=0
 while i<=9
-    exe 'nmap <leader>' . i . ' <F' . i . '>'
+    exe printf('nmap <leader>%d <F%d>', i, i)
     let i+=1
 endwhile
 let i=0
 while i<=6
-    exe 'nmap <leader><leader>' . i . ' <F1' . i . '>'
+    exe printf('nmap <leader><leader>%d <F%d>', i, i)
     let i+=1
 endwhile
 
