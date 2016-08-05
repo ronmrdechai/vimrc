@@ -206,32 +206,24 @@ endwhile
 " Open files with specific syntax
 autocmd BufRead,BufNewFile *.asm set filetype=nasm
 
-" Tame keyword completion in Perl
-autocmd FileType perl setlocal complete-=i
+" Options for perl
+autocmd FileType perl
+            \ setlocal complete-=i |
+            \ setlocal makeprg=perl\ -c\ -MVi::QuickFix\ % |
+            \ setlocal errorformat+=%m\ at\ %f\ line\ %l\. |
+            \ setlocal errorformat+=%m\ at\ %f\ line\ %l
+
+" Options for python
+autocmd FileType python
+            \ setlocal makeprg=pep8\ % |
+            \ setlocal completeopt-=preview
 
 " Spell check for git commit messages
 autocmd FileType gitcommit setlocal spell
 
-" Download VimPlug if it does not exist
-if empty(glob("~/.vim/plugged/plug.vim"))
-    silent !mkdir -p ~/.vim/plugged
-    silent !curl -sfLo ~/.vim/plugged/plug.vim
-                \ https://raw.github.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall
-endif
-" Use VimPlug for external packages
-runtime! plugged/plug.vim
-call plug#begin('~/.vim/plugged')
-Plug  'vim-scripts/avr.vim'
-Plug      'morhetz/gruvbox'
-Plug        'wting/rust.vim'
-Plug   'scrooloose/syntastic'
-Plug    'godlygeek/tabular',        { 'on': 'Tabularize' }
-Plug 'Keithbsmiley/tmux.vim'
-Plug        'tpope/vim-commentary'
-Plug       'rodjek/vim-puppet'
-Plug        'tpope/vim-surround'
-call plug#end()
+" Use Pathogen for external plugins
+runtime! runtime/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect('runtime/{}')
 
 " And use ~/.vim/local for local plugins
 let &rtp .= ',~/.vim/local/'
