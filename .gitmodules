@@ -1,0 +1,33 @@
+[submodule "runtime/vim-pathogen"]
+	path = runtime/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen
+[submodule "runtime/avr.vim"]
+	path = runtime/avr.vim
+	url = https://github.com/vim-scripts/avr.vim
+[submodule "runtime/gruvbox"]
+	path = runtime/gruvbox
+	url = https://github.com/morhetz/gruvbox
+[submodule "runtime/pytest.vim"]
+	path = runtime/pytest.vim
+	url = https://github.com/alfredodeza/pytest.vim
+[submodule "runtime/rust.vim"]
+	path = runtime/rust.vim
+	url = https://github.com/wting/rust.vim
+[submodule "runtime/tabular"]
+	path = runtime/tabular
+	url = https://github.com/godlygeek/tabular
+[submodule "runtime/tmux.vim"]
+	path = runtime/tmux.vim
+	url = https://github.com/Keithbsmiley/tmux.vim
+[submodule "runtime/vim-commentary"]
+	path = runtime/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "runtime/vim-gtest"]
+	path = runtime/vim-gtest
+	url = https://github.com/alepez/vim-gtest
+[submodule "runtime/vim-puppet"]
+	path = runtime/vim-puppet
+	url = https://github.com/rodjek/vim-puppet
+[submodule "runtime/vim-surround"]
+	path = runtime/vim-surround
+	url = https://github.com/tpope/vim-surround
