@@ -31,6 +31,3 @@
 [submodule "runtime/vim-surround"]
 	path = runtime/vim-surround
 	url = https://github.com/tpope/vim-surround
-[submodule "plugged/vim-ps1"]
-	path = runtime/vim-ps1
-	url = git@github.com:PProvost/vim-ps1.git
