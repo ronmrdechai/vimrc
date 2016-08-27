@@ -200,7 +200,7 @@ while i<=9
 endwhile
 let i=0
 while i<=6
-    exe printf('nmap <leader><leader>%d <F%d>', i, i)
+    exe printf('nmap <leader><leader>%d <F1%d>', i, i)
     let i+=1
 endwhile
 
