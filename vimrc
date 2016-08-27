@@ -238,9 +238,6 @@ set background=dark
 let g:gruvbox_italic=0
 colorscheme gruvbox
 
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-
 " Write to file as root with "WRITE"
 command WRITE %!sudo tee > /dev/null %
 
