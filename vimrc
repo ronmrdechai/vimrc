@@ -131,6 +131,7 @@ let mapleader=" "
 
 " General mappings
 nmap ZA :qa<CR>
+nmap ZW :wa<Bar>q<CR>
 
 " Readline-like command-line mode
 cnoremap <C-A> <Home>
