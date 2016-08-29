@@ -143,12 +143,14 @@ cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 
 " Next and previous buffers, locations, and quickfix
-nmap <silent>]l :lnext<CR>
-nmap <silent>[l :lprevious<CR>
-nmap <silent>]c :cnext<CR>
-nmap <silent>[c :cprevious<CR>
 nmap <silent>]b :bnext<CR>
 nmap <silent>[b :bprevious<CR>
+nmap <silent>]c :cnext<CR>
+nmap <silent>[c :cprevious<CR>
+nmap <silent>]l :lnext<CR>
+nmap <silent>[l :lprevious<CR>
+nmap <silent>]t :tnext<CR>
+nmap <silent>[t :tprevious<CR>
 
 " Allow moving lines up or down with Ctrl-<Up>/<Down>
 nnoremap <silent><C-j> :m .+1<CR>==
