@@ -174,17 +174,6 @@ onoremap <silent><leader>b :<C-u>call
             \ search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)
             \\<Bar>\%^','bW')<CR>
 
-" Poor man's CtrlP
-set path=.,**
-set wildcharm=<C-z>
-nnoremap gb :ls<CR>:b<Space>
-nnoremap <leader>f :find *
-nnoremap <leader>s :vert sfind *
-nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
-nnoremap <leader>S :vert sfind <C-R>=expand('%:h').'/*'<CR>
-nnoremap <leader>u :buffer <C-z><S-Tab>
-nnoremap <leader>U :vert sbuffer <C-z><S-Tab>
-
 " Execute current line or selected lines
 command -bar -range Execute silent <line1>,<line2>yank z
             \ | let @z = substitute(@z, '\n\s*\\', '', 'g') | @z
