@@ -1,0 +1,4 @@
+#ifndef [:VIM_EVAL:]"_" . substitute(toupper(expand("%:t")), "\\.", "_", "g")[:END_EVAL:]
+#define [:VIM_EVAL:]"_" . substitute(toupper(expand("%:t")), "\\.", "_", "g")[:END_EVAL:]
+
+#endif
