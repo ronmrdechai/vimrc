@@ -132,6 +132,7 @@ let mapleader=" "
 " General mappings
 nmap ZA :qa<CR>
 nmap ZW :wa<Bar>q<CR>
+nmap Y y$
 
 " Readline-like command-line mode
 cnoremap <C-A> <Home>
@@ -252,7 +253,12 @@ command -nargs=* -bang Git call CmdGit(<bang>0, <f-args>)
 " Set b:git_branch to the current git branch
 function SetGitBranch()
     let l:cwd = getcwd()
-    cd %:p:h
+    try
+        cd %:p:h
+    catch /^Vim\%((\a\+)\)\=:E/
+        let b:git_branch = ""
+        return
+    endtry
     let l:branch = system("git rev-parse --abbrev-ref HEAD 2> /dev/null")
     if v:shell_error
         let l:branch = ""
