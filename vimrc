@@ -293,9 +293,9 @@ map <F10> :GenerateTags<CR>
 " Basic template support
 augroup templates
   au!
-  " read in template files
+  " Read in template files
   autocmd BufNewFile *.* silent! execute "0r $HOME/.vim/skel/" . tolower(expand("<afile>:e"))
 
-  " parse special text in the templates after the read
+  " Parse special text in the templates after the read
   autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 augroup END
