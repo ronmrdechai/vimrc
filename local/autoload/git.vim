@@ -77,3 +77,37 @@ function git#stage()
         echohl None
     endif
 endfunction
+
+function git#cmd(bang, ...)
+    let l:env = "env GIT_EDITOR=true GIT_PAGER=cat "
+    let l:cwd = getcwd()
+    cd %:p:h
+    let l:res = system(l:env . "git " . join(a:000, " ") .
+                \ (a:bang ? "" : " " . expand("%:t")))
+    if l:res != ""
+        echo l:res
+    endif
+    edit!
+    execute 'cd' fnameescape(l:cwd)
+endfunction
+
+function git#set_branch()
+    let l:cwd = getcwd()
+    try
+        cd %:p:h
+    catch /^Vim\%((\a\+)\)\=:E/
+        let b:git_branch = ""
+        return
+    endtry
+    let l:branch = system("git rev-parse --abbrev-ref HEAD 2> /dev/null")
+    if v:shell_error
+        let l:branch = ""
+    endif
+    let l:branch = substitute(l:branch, '\n$', '\1', '')
+    if l:branch == "HEAD"
+        let l:branch = system("git rev-parse --short HEAD 2> /dev/null")
+        let l:branch = substitute(l:branch, '\n$', '\1', '')
+    endif
+    execute 'cd' fnameescape(l:cwd)
+    let b:git_branch = l:branch
+endfunction

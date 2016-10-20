@@ -229,46 +229,6 @@ colorscheme gruvbox
 " Write to file as root with "WRITE"
 command WRITE %!sudo tee > /dev/null %
 
-" Call '!git' more easily
-function CmdGit(bang, ...)
-    let l:env = "env GIT_EDITOR=true GIT_PAGER=cat "
-    let l:cwd = getcwd()
-    cd %:p:h
-    let l:res = system(l:env . "git " . join(a:000, " ") .
-                \ (a:bang ? "" : " " . expand("%:t")))
-    if l:res != ""
-        echo l:res
-    endif
-    edit!
-    execute 'cd' fnameescape(l:cwd)
-endfunction
-
-command -nargs=* -bang G   call CmdGit(<bang>0, <f-args>)
-command -nargs=* -bang Git call CmdGit(<bang>0, <f-args>)
-
-" Set b:git_branch to the current git branch
-function SetGitBranch()
-    let l:cwd = getcwd()
-    try
-        cd %:p:h
-    catch /^Vim\%((\a\+)\)\=:E/
-        let b:git_branch = ""
-        return
-    endtry
-    let l:branch = system("git rev-parse --abbrev-ref HEAD 2> /dev/null")
-    if v:shell_error
-        let l:branch = ""
-    endif
-    let l:branch = substitute(l:branch, '\n$', '\1', '')
-    if l:branch == "HEAD"
-        let l:branch = system("git rev-parse --short HEAD 2> /dev/null")
-        let l:branch = substitute(l:branch, '\n$', '\1', '')
-    endif
-    execute 'cd' fnameescape(l:cwd)
-    let b:git_branch = l:branch
-endfunction
-autocmd BufEnter * call SetGitBranch()
-
 " Generate tags for specified directory
 function GenerateTags(...)
     if a:0 == 0
