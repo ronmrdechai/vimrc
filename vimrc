@@ -59,9 +59,11 @@ set viminfo+=n$HOME/.vim/viminfo
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
     set grepformat=%f:%l:%c:%m,%f:%l:%m
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 elseif executable('ack')
     set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
     set grepformat=%f:%l:%c:%m,%f:%l:%m
+    let g:ctrlp_user_command = 'ack %s -l --nocolor -g ""'
 endif
 
 " Highlight the 81st column
