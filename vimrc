@@ -1,9 +1,3 @@
-" Disable vi compatibility
-set nocompatible
-
-" Support multi-byte character encodings
-set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
-
 " Tab options
 set expandtab
 set smarttab
