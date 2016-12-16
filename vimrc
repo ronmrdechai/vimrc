@@ -245,7 +245,7 @@ function GenerateTags(...)
     else
         let l:exe = "ctags"
     endif
-    execute "!" . l:exe . " -R --c++-kinds=+p --fields=+iaS --extra=+q " . l:dir
+    execute "!" . l:exe . " -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=*.txt" . l:dir
 endfunction
 command -nargs=? GenerateTags call GenerateTags(<f-args>)
 map <F10> :GenerateTags<CR>
