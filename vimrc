@@ -39,6 +39,7 @@ set dictionary=/usr/share/dict/words
 
 " Better command completion
 set wildmenu
+set wildignore+=*/build/*
 set wildignorecase
 set ignorecase
 set smartcase
@@ -225,6 +226,9 @@ syntax on
 set background=dark
 let g:gruvbox_italic=0
 colorscheme gruvbox
+
+" CtrlP options
+let g:ctrlp_extensions = ['tag']
 
 " Write to file as root with "WRITE"
 command WRITE %!sudo tee > /dev/null %
