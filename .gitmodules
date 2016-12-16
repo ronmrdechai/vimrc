@@ -37,3 +37,6 @@
 [submodule "runtime/ctrlp.vim"]
 	path = runtime/ctrlp.vim
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
+[submodule "runtime/cmake.vim"]
+	path = runtime/cmake.vim
+	url = git@github.com:jalcine/cmake.vim.git
