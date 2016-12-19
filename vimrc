@@ -181,6 +181,9 @@ xnoremap <silent>g!  :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
 " Toggle paste mode with <leader>p
 nnoremap <leader>p :set invpaste paste?<CR>
 
+" Toggle spell mode with <leader>s
+nnoremap <leader>s :set spell!<CR>
+
 " Map function keys to <leader>#
 let i=0
 while i<=9
