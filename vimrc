@@ -184,6 +184,9 @@ nnoremap <leader>p :set invpaste paste?<CR>
 " Toggle spell mode with <leader>s
 nnoremap <leader>s :set spell!<CR>
 
+" Stop highlighting things with <leader>h
+nnoremap <leader>h :nohlsearch<CR>
+
 " Map function keys to <leader>#
 let i=0
 while i<=9
