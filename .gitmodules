@@ -7,9 +7,6 @@
 [submodule "runtime/gruvbox"]
 	path = runtime/gruvbox
 	url = https://github.com/morhetz/gruvbox
-[submodule "runtime/pytest.vim"]
-	path = runtime/pytest.vim
-	url = https://github.com/alfredodeza/pytest.vim
 [submodule "runtime/rust.vim"]
 	path = runtime/rust.vim
 	url = https://github.com/wting/rust.vim
@@ -22,9 +19,6 @@
 [submodule "runtime/vim-commentary"]
 	path = runtime/vim-commentary
 	url = https://github.com/tpope/vim-commentary
-[submodule "runtime/vim-gtest"]
-	path = runtime/vim-gtest
-	url = https://github.com/alepez/vim-gtest
 [submodule "runtime/vim-puppet"]
 	path = runtime/vim-puppet
 	url = https://github.com/rodjek/vim-puppet
@@ -37,6 +31,3 @@
 [submodule "runtime/ctrlp.vim"]
 	path = runtime/ctrlp.vim
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
-[submodule "runtime/cmake.vim"]
-	path = runtime/cmake.vim
-	url = git@github.com:jalcine/cmake.vim.git
