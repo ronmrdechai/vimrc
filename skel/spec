@@ -1,0 +1,37 @@
+Name:           [:VIM_EVAL:]expand('%:r')[:END_EVAL:]
+Version:        
+Release:        1%{?dist}
+Summary:        
+
+Group:          
+License:        
+URL:            
+Source0:        %{name}-%{version}.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+BuildRequires:  
+Requires:       
+
+%description
+
+%prep
+%setup -q
+
+%build
+%configure
+make %{?_smp_mflags}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make install DESTDIR=$RPM_BUILD_ROOT
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root,-)
+%doc
+
+%changelog
+* [:VIM_EVAL:]systemlist('date +"%a %b %d %Y"')[0][:END_EVAL:] [:VIM_EVAL:]systemlist("finger ronmrdechai | sed -e '/Name/!d' -e 's/.*Name: //'")[0][:END_EVAL:] <[:VIM_EVAL:]$USER[:END_EVAL:]@EXAMPLE.com> VERSION
+- Initial RPM release
