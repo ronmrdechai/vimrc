@@ -263,5 +263,5 @@ augroup templates
   autocmd BufNewFile *.* silent! execute "0r $HOME/.vim/skel/" . tolower(expand("<afile>:e"))
 
   " Parse special text in the templates after the read
-  autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
+  autocmd BufNewFile * silent %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge | execute "normal gg"
 augroup END
