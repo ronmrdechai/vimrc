@@ -33,5 +33,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc
 
 %changelog
-* [:VIM_EVAL:]systemlist('date +"%a %b %d %Y"')[0][:END_EVAL:] [:VIM_EVAL:]systemlist("finger ronmrdechai | sed -e '/Name/!d' -e 's/.*Name: //'")[0][:END_EVAL:] <[:VIM_EVAL:]$USER[:END_EVAL:]@EXAMPLE.com> VERSION
+* [:VIM_EVAL:]systemlist('date +"%a %b %d %Y"')[0][:END_EVAL:] [:VIM_EVAL:]systemlist("finger $USER | sed -e '/Name/!d' -e 's/.*Name: //'")[0][:END_EVAL:] <[:VIM_EVAL:]$USER[:END_EVAL:]@EXAMPLE.com> VERSION
 - Initial RPM release
