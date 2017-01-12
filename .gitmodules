@@ -31,3 +31,6 @@
 [submodule "runtime/ctrlp.vim"]
 	path = runtime/ctrlp.vim
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
+[submodule "runtime/vim-rtags"]
+	path = runtime/vim-rtags
+	url = https://github.com/lyuts/vim-rtags
