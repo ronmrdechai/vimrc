@@ -95,9 +95,11 @@ endfunction
 if $TERM_PROGRAM == "iTerm.app" || exists("$KONSOLE_DBUS_SERVICE")
     let &t_SI = TmuxEscape("\<Esc>]50;CursorShape=1\x7")
     let &t_EI = TmuxEscape("\<Esc>]50;CursorShape=0\x7")
+    let &t_SR = TmuxEscape("\<Esc>]50;CursorShape=2\x7")
 elseif $TERM_PROGRAM == "Apple_Terminal" || $COLORTERM == "gnome-terminal"
     let &t_SI = TmuxEscape("\<Esc>[5 q")
     let &t_EI = TmuxEscape("\<Esc>[0 q")
+    let &t_SR = TmuxEscape("\<Esc>[4 q")
 endif
 
 " TODO: Find a better condition for this
