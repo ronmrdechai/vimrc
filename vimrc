@@ -122,6 +122,23 @@ if has('unix')
     cnoremap <special><expr><Esc>[201~ ""
 endif
 
+" If tmux is running, activate focus events and save on focus lost
+if exists("$TMUX")
+    let &t_ti .= "\<Esc>[?1004h"
+    let &t_te .= "\<Esc>[?1004l"
+
+    nnoremap <silent><special> <Esc>[O :silent doautocmd FocusLost %<CR>
+    nnoremap <silent><special> <Esc>[I :silent doautocmd FocusGained %<CR>
+    onoremap <silent><special> <Esc>[O <Esc>:silent doautocmd FocusLost %<CR>
+    onoremap <silent><special> <Esc>[I <Esc>:silent doautocmd FocusGained %<CR>
+    vnoremap <silent><special> <Esc>[O <Esc>:silent doautocmd FocusLost %<CR>gv
+    vnoremap <silent><special> <Esc>[I <Esc>:silent doautocmd FocusGained %<CR>gv
+    inoremap <silent><special> <Esc>[O <C-O>:silent doautocmd FocusLost %<CR>
+    inoremap <silent><special> <Esc>[I <C-O>:silent doautocmd FocusGained %<CR>
+
+    au FocusLost * silent! wa
+endif
+
 " netrw options
 let g:netrw_winsize = -28
 let g:netrw_liststyle = 3
