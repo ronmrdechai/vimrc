@@ -34,6 +34,9 @@ set showmatch
 " Hide closed buffers
 set hidden
 
+" Don't include cursor in visual mode selections
+set selection=exclusive
+
 " Set a dictionary for dictionary completion
 set dictionary=/usr/share/dict/words
 
