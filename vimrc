@@ -186,10 +186,10 @@ nnoremap <silent>g!! :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
 xnoremap <silent>g!  :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
 
 " Toggle paste mode with <leader>p
-nnoremap <leader>p :set invpaste paste?<CR>
+nnoremap <leader>p :set paste! paste?<CR>
 
 " Toggle spell mode with <leader>s
-nnoremap <leader>s :set spell!<CR>
+nnoremap <leader>s :set spell! spell?<CR>
 
 " Stop highlighting things with <leader>h
 nnoremap <leader>h :nohlsearch<CR>
@@ -223,10 +223,6 @@ autocmd FileType python
 
 " Spell check for git commit messages
 autocmd FileType gitcommit setlocal spell
-
-" Use Pathogen for external plugins
-runtime! runtime/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect('runtime/{}')
 
 " And use ~/.vim/local for local plugins
 let &rtp .= ',~/.vim/local/'
