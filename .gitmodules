@@ -1,6 +1,3 @@
-[submodule "runtime/vim-pathogen"]
-	path = runtime/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen
 [submodule "runtime/avr.vim"]
 	path = pack/packages/start/avr.vim
 	url = https://github.com/vim-scripts/avr.vim
