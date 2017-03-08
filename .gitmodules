@@ -1,12 +1,6 @@
-[submodule "runtime/avr.vim"]
-	path = pack/packages/start/avr.vim
-	url = https://github.com/vim-scripts/avr.vim
 [submodule "runtime/gruvbox"]
 	path = pack/packages/start/gruvbox
 	url = https://github.com/morhetz/gruvbox
-[submodule "runtime/rust.vim"]
-	path = pack/packages/start/rust.vim
-	url = https://github.com/wting/rust.vim
 [submodule "runtime/tabular"]
 	path = pack/packages/start/tabular
 	url = https://github.com/godlygeek/tabular
