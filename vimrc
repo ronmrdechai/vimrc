@@ -34,9 +34,6 @@ set showmatch
 " Hide closed buffers
 set hidden
 
-" Don't include cursor in visual mode selections
-set selection=exclusive
-
 " Set a dictionary for dictionary completion
 set dictionary=/usr/share/dict/words
 
@@ -244,7 +241,7 @@ autocmd FileType python
 " Spell check for git commit messages
 autocmd FileType gitcommit setlocal spell
 
-" And use ~/.vim/local for local plugins
+" Use ~/.vim/local for local plugins
 let &rtp .= ',~/.vim/local/'
 
 " Enable syntax highlighting
