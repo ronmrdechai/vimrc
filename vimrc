@@ -238,6 +238,14 @@ autocmd FileType python
             \ setlocal makeprg=pep8\ % |
             \ setlocal completeopt-=preview
 
+" Poor man's a.vim
+autocmd FileType cpp
+            \ cabbrev <buffer> `c %:r.cc |
+            \ cabbrev <buffer> `h %:r.h
+autocmd FileType c
+            \ cabbrev <buffer> `c %:r.c |
+            \ cabbrev <buffer> `h %:r.h
+
 " Spell check for git commit messages
 autocmd FileType gitcommit setlocal spell
 
