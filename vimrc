@@ -196,12 +196,6 @@ onoremap <silent><leader>b :<C-u>call
             \ search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)
             \\<Bar>\%^','bW')<CR>
 
-" Execute current line or selected lines
-command -bar -range Execute silent <line1>,<line2>yank z
-            \ | let @z = substitute(@z, '\n\s*\\', '', 'g') | @z
-nnoremap <silent>g!! :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
-xnoremap <silent>g!  :Execute<Bar>execute 'normal! ' . v:count1 . 'j'<CR>
-
 " Toggle paste mode with <leader>p
 nnoremap <leader>p :set paste! paste?<CR>
 
@@ -222,9 +216,6 @@ while i<=6
     exe printf('nmap <leader><leader>%d <F1%d>', i, i)
     let i+=1
 endwhile
-
-" Open files with specific syntax
-autocmd BufRead,BufNewFile *.asm set filetype=nasm
 
 " Options for perl
 autocmd FileType perl
