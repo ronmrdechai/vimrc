@@ -205,6 +205,9 @@ nnoremap <leader>s :set spell! spell?<CR>
 " Stop highlighting things with <leader>h
 nnoremap <leader>h :nohlsearch<CR>
 
+" Search with vimgrep
+nnoremap <leader>g :vim  **/*.%:e<C-b><Right><Right><Right><Right>
+
 " Map function keys to <leader>#
 let i=0
 while i<=9
