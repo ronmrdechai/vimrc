@@ -210,6 +210,44 @@ nnoremap <leader>h :nohlsearch<CR>
 " Search with vimgrep
 nnoremap <leader>g :vim  **/*.%:e<C-b><Right><Right><Right><Right>
 
+" FZF
+nnoremap ,f :GFiles<CR>
+nnoremap ,b :Buffers<CR>
+nnoremap ,t :Tags<CR>
+nnoremap ,m :Marks<CR>
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" cscope
+set cscopetag
+nnoremap <leader>ch :cscope h<CR>
+for letter in ['a', 'c', 'd', 'e', 'f', 'g', 'i', 's', 't']
+    exe printf('nnoremap <leader>c%s :cs find %s <C-r>=expand("<cword>")<CR><CR>',
+                \ letter,
+                \ letter)
+endfor
+
 " Map function keys to <leader>#
 let i=0
 while i<=9
@@ -258,9 +296,6 @@ set background=dark
 let g:gruvbox_italic=0
 colorscheme gruvbox
 
-" CtrlP options
-let g:ctrlp_extensions = ['tag']
-
 " Write to file as root with "WRITE"
 command WRITE %!sudo tee > /dev/null %
 
@@ -280,6 +315,18 @@ function GenerateTags(...)
 endfunction
 command -nargs=? GenerateTags call GenerateTags(<f-args>)
 map <F10> :GenerateTags<CR>
+
+" Generate cscope for specified directory
+function GenerateCScope(...)
+    if a:0 == 0
+        let l:dir = '.'
+    else
+        let l:dir = a:1
+    endif
+    execute "!cscope -b -R " . l:dir
+endfunction
+command -nargs=? GenerateCScope call GenerateCScope(<f-args>)
+map <F11> :GenerateCScope<CR>
 
 " Basic template support
 augroup templates
