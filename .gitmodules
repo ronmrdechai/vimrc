@@ -4,24 +4,15 @@
 [submodule "runtime/tabular"]
 	path = pack/packages/start/tabular
 	url = https://github.com/godlygeek/tabular
-[submodule "runtime/tmux.vim"]
-	path = pack/packages/start/tmux.vim
-	url = https://github.com/Keithbsmiley/tmux.vim
 [submodule "runtime/vim-commentary"]
 	path = pack/packages/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
-[submodule "runtime/vim-puppet"]
-	path = pack/packages/start/vim-puppet
-	url = https://github.com/rodjek/vim-puppet
 [submodule "runtime/vim-surround"]
 	path = pack/packages/start/vim-surround
 	url = https://github.com/tpope/vim-surround
 [submodule "runtime/vim-ps1"]
 	path = pack/packages/start/vim-ps1
 	url = git@github.com:PProvost/vim-ps1.git
-[submodule "runtime/ctrlp.vim"]
-	path = pack/packages/start/ctrlp.vim
-	url = git@github.com:ctrlpvim/ctrlp.vim.git
 [submodule "runtime/vim-rtags"]
 	path = pack/packages/start/vim-rtags
 	url = https://github.com/lyuts/vim-rtags
