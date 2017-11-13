@@ -56,10 +56,12 @@ endif
 " Move viminfo into .vim
 set viminfo+=n$HOME/.vim/viminfo
 
-" Use ag/ack for grepping when available
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
+" Use ripgrep/ag/ack for grepping when available
+if executable('rg')
+    set grepprg=rg\ --vimgrep
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+elseif executable('ag')
+    set grepprg=ag\ --vimgrep
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 elseif executable('ack')
     set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
@@ -240,8 +242,9 @@ autocmd FileType c
             \ cabbrev <buffer> `c %:r.c |
             \ cabbrev <buffer> `h %:r.h
 
-" Spell check for git commit messages
+" Spell check for git commit messages and markdown
 autocmd FileType gitcommit setlocal spell
+autocmd FileType markdown  setlocal spell
 
 " Use ~/.vim/local for local plugins
 let &rtp .= ',~/.vim/local/'
