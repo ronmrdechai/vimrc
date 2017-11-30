@@ -1,9 +1,6 @@
 [submodule "runtime/gruvbox"]
 	path = pack/packages/start/gruvbox
 	url = https://github.com/morhetz/gruvbox
-[submodule "runtime/tabular"]
-	path = pack/packages/start/tabular
-	url = https://github.com/godlygeek/tabular
 [submodule "runtime/vim-commentary"]
 	path = pack/packages/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
@@ -16,9 +13,6 @@
 [submodule "runtime/vim-rtags"]
 	path = pack/packages/start/vim-rtags
 	url = https://github.com/lyuts/vim-rtags
-[submodule "pack/packages/start/vim-fugitive"]
-	path = pack/packages/start/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive.git
 [submodule "pack/packages/start/fzf.vim"]
 	path = pack/packages/start/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
