@@ -300,9 +300,9 @@ set noshowmode shortmess+=c
 set noinfercase
 set completeopt-=preview
 set completeopt+=menuone,noinsert,noselect
-let g:clang_library_path = '~/.homebrew/Cellar/llvm/5.0.0/lib/'
-let g:clang_user_options = '-std=c++14'
-let g:clang_complete_auto = 1
+let g:clang_library_path = expand("$HOME/.homebrew/Cellar/llvm/5.0.0/lib/")
+let g:clang_user_options = "-std=c++17"
+let g:clang_complete_auto = 0
 
 " Write to file as root with "WRITE"
 command WRITE %!sudo tee > /dev/null %
