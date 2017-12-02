@@ -296,6 +296,7 @@ set background=dark
 let g:gruvbox_italic=0
 colorscheme gruvbox
 
+" Completion options
 set noshowmode shortmess+=c
 set noinfercase
 set completeopt-=preview
@@ -303,6 +304,7 @@ set completeopt+=menuone,noinsert,noselect
 let g:clang_library_path = expand("$HOME/.homebrew/Cellar/llvm/5.0.0/lib/")
 let g:clang_user_options = "-std=c++17"
 let g:clang_complete_auto = 0
+let g:jedi#popup_on_dot = 0
 
 " Write to file as root with "WRITE"
 command WRITE %!sudo tee > /dev/null %

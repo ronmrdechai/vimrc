@@ -31,3 +31,6 @@
 [submodule "pack/packages/start/clang_complete"]
 	path = pack/packages/start/clang_complete
 	url = git@github.com:Rip-Rip/clang_complete.git
+[submodule "pack/packages/start/jedi-vim"]
+	path = pack/packages/start/jedi-vim
+	url = git@github.com:davidhalter/jedi-vim.git
