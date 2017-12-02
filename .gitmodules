@@ -16,3 +16,18 @@
 [submodule "pack/packages/start/fzf.vim"]
 	path = pack/packages/start/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
+[submodule "pack/packages/start/trace.vim"]
+	path = pack/packages/start/trace.vim
+	url = git@github.com:xtal8/traces.vim.git
+[submodule "pack/packages/start/targets.vim"]
+	path = pack/packages/start/targets.vim
+	url = https://github.com/wellle/targets.vim
+[submodule "pack/packages/start/vim-mucomplete"]
+	path = pack/packages/start/vim-mucomplete
+	url = git@github.com:lifepillar/vim-mucomplete.git
+[submodule "pack/packages/start/vim-easy-align"]
+	path = pack/packages/start/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align
+[submodule "pack/packages/start/clang_complete"]
+	path = pack/packages/start/clang_complete
+	url = git@github.com:Rip-Rip/clang_complete.git

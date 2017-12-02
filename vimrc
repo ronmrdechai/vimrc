@@ -177,12 +177,12 @@ nmap [a :previous<CR>
 nmap [A :first<CR>
 
 " Allow moving lines up or down with Ctrl-<Up>/<Down>
-nnoremap <silent><C-j> :m .+1<CR>==
-nnoremap <silent><C-k> :m .-2<CR>==
-inoremap <silent><C-j> <Esc>:m .+1<CR>==gi
-inoremap <silent><C-k> <Esc>:m .-2<CR>==gi
-vnoremap <silent><C-j> :m '>+1<CR>gv=gv
-vnoremap <silent><C-k> :m '<-2<CR>gv=gv
+" nnoremap <silent><C-j> :m .+1<CR>==
+" nnoremap <silent><C-k> :m .-2<CR>==
+" inoremap <silent><C-j> <Esc>:m .+1<CR>==gi
+" inoremap <silent><C-k> <Esc>:m .-2<CR>==gi
+" vnoremap <silent><C-j> :m '>+1<CR>gv=gv
+" vnoremap <silent><C-k> :m '<-2<CR>gv=gv
 
 " CamelCase motions:
 nnoremap <silent><leader>w :<C-u>call
@@ -295,6 +295,14 @@ syntax on
 set background=dark
 let g:gruvbox_italic=0
 colorscheme gruvbox
+
+set noshowmode shortmess+=c
+set noinfercase
+set completeopt-=preview
+set completeopt+=menuone,noinsert,noselect
+let g:clang_library_path = '~/.homebrew/Cellar/llvm/5.0.0/lib/'
+let g:clang_user_options = '-std=c++14'
+let g:clang_complete_auto = 1
 
 " Write to file as root with "WRITE"
 command WRITE %!sudo tee > /dev/null %
