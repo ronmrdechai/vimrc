@@ -177,12 +177,12 @@ nmap [a :previous<CR>
 nmap [A :first<CR>
 
 " Allow moving lines up or down with Ctrl-<Up>/<Down>
-" nnoremap <silent><C-j> :m .+1<CR>==
-" nnoremap <silent><C-k> :m .-2<CR>==
-" inoremap <silent><C-j> <Esc>:m .+1<CR>==gi
-" inoremap <silent><C-k> <Esc>:m .-2<CR>==gi
-" vnoremap <silent><C-j> :m '>+1<CR>gv=gv
-" vnoremap <silent><C-k> :m '<-2<CR>gv=gv
+nnoremap <silent><C-j> :m .+1<CR>==
+nnoremap <silent><C-k> :m .-2<CR>==
+inoremap <silent><C-j> <Esc>:m .+1<CR>==gi
+inoremap <silent><C-k> <Esc>:m .-2<CR>==gi
+vnoremap <silent><C-j> :m '>+1<CR>gv=gv
+vnoremap <silent><C-k> :m '<-2<CR>gv=gv
 
 " CamelCase motions:
 nnoremap <silent><leader>w :<C-u>call
@@ -211,7 +211,7 @@ nnoremap <leader>h :nohlsearch<CR>
 nnoremap <leader>g :vim  **/*.%:e<C-b><Right><Right><Right><Right>
 
 " FZF
-nnoremap ,f :GFiles<CR>
+nnoremap ,f :Files<CR>
 nnoremap ,b :Buffers<CR>
 nnoremap ,t :Tags<CR>
 nnoremap ,m :Marks<CR>
@@ -219,11 +219,13 @@ nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_buffers_jump = 1
+let g:fzf_layout = { 'window': 'bottomright 10split enew' }
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
-
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -300,11 +302,18 @@ colorscheme gruvbox
 set noshowmode shortmess+=c
 set noinfercase
 set completeopt-=preview
-set completeopt+=menuone,noinsert,noselect
+set completeopt+=menuone
 let g:clang_library_path = expand("$HOME/.homebrew/Cellar/llvm/5.0.0/lib/")
-let g:clang_user_options = "-std=c++17"
+let g:clang_user_options = "-std=c++1z"
 let g:clang_complete_auto = 0
+
+let g:jedi#show_call_signatures = 0
+let g:jedi#auto_initialization = 0
+let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
+
+inoremap <Silent> <Plug>(MUcompleteFwdKey) <C-g>
+imap <C-g> <Plug>(MUcompleteCycFwd)
 
 " Write to file as root with "WRITE"
 command WRITE %!sudo tee > /dev/null %

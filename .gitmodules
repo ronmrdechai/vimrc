@@ -7,9 +7,6 @@
 [submodule "runtime/vim-surround"]
 	path = pack/packages/start/vim-surround
 	url = https://github.com/tpope/vim-surround
-[submodule "runtime/vim-ps1"]
-	path = pack/packages/start/vim-ps1
-	url = git@github.com:PProvost/vim-ps1.git
 [submodule "runtime/vim-rtags"]
 	path = pack/packages/start/vim-rtags
 	url = https://github.com/lyuts/vim-rtags
