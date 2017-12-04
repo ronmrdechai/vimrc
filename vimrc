@@ -219,9 +219,12 @@ nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
+if has("macunix")
+    set rtp+=/Users/ronmrdechai/.homebrew/opt/fzf
+endif
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_buffers_jump = 1
-let g:fzf_layout = { 'window': 'bottomright 10split enew' }
+let g:fzf_layout = { 'window': 'belowright 10split enew' }
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
@@ -303,7 +306,9 @@ set noshowmode shortmess+=c
 set noinfercase
 set completeopt-=preview
 set completeopt+=menuone
-let g:clang_library_path = expand("$HOME/.homebrew/Cellar/llvm/5.0.0/lib/")
+if has("macunix")
+    let g:clang_library_path = expand("$HOME/.homebrew/Cellar/llvm/5.0.0/lib/")
+endif
 let g:clang_user_options = "-std=c++1z"
 let g:clang_complete_auto = 0
 
