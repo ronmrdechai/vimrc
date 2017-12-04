@@ -59,14 +59,11 @@ set viminfo+=n$HOME/.vim/viminfo
 " Use ripgrep/ag/ack for grepping when available
 if executable('rg')
     set grepprg=rg\ --vimgrep
-    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 elseif executable('ag')
     set grepprg=ag\ --vimgrep
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 elseif executable('ack')
     set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
     set grepformat=%f:%l:%c:%m,%f:%l:%m
-    let g:ctrlp_user_command = 'ack %s -l --nocolor -g ""'
 endif
 
 " Highlight the 81st column
@@ -227,7 +224,7 @@ let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'window': 'belowright 10split enew' }
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
+  \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -243,6 +240,9 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 " cscope
 set cscopetag
