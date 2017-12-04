@@ -7,9 +7,6 @@
 [submodule "runtime/vim-surround"]
 	path = pack/packages/start/vim-surround
 	url = https://github.com/tpope/vim-surround
-[submodule "runtime/vim-rtags"]
-	path = pack/packages/start/vim-rtags
-	url = https://github.com/lyuts/vim-rtags
 [submodule "pack/packages/start/fzf.vim"]
 	path = pack/packages/start/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
