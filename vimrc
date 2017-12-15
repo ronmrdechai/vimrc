@@ -209,9 +209,11 @@ nnoremap <leader>g :vim  **/*.%:e<C-b><Right><Right><Right><Right>
 
 " FZF
 nnoremap ,f :Files<CR>
+nnoremap ,g :GFiles<CR>
 nnoremap ,b :Buffers<CR>
 nnoremap ,t :Tags<CR>
 nnoremap ,m :Marks<CR>
+nnoremap ,a :Ag<CR>
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
@@ -300,25 +302,6 @@ syntax on
 set background=dark
 let g:gruvbox_italic=0
 colorscheme gruvbox
-
-" Completion options
-set noshowmode shortmess+=c
-set noinfercase
-set completeopt-=preview
-set completeopt+=menuone
-if has("macunix")
-    let g:clang_library_path = expand("$HOME/.homebrew/Cellar/llvm/5.0.0/lib/")
-endif
-let g:clang_user_options = "-std=c++1z"
-let g:clang_complete_auto = 0
-
-let g:jedi#show_call_signatures = 0
-let g:jedi#auto_initialization = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#popup_on_dot = 0
-
-inoremap <Silent> <Plug>(MUcompleteFwdKey) <C-g>
-imap <C-g> <Plug>(MUcompleteCycFwd)
 
 " Write to file as root with "WRITE"
 command WRITE %!sudo tee > /dev/null %
