@@ -271,13 +271,16 @@ autocmd FileType python
             \ setlocal makeprg=pep8\ % |
             \ setlocal completeopt-=preview
 
-" Poor man's a.vim
-autocmd FileType cpp
+" Options for c and cpp
+autocmd FileType c,cpp
             \ cabbrev <buffer> `c %:r.cc |
-            \ cabbrev <buffer> `h %:r.h
-autocmd FileType c
-            \ cabbrev <buffer> `c %:r.c |
-            \ cabbrev <buffer> `h %:r.h
+            \ cabbrev <buffer> `h %:r.h  |
+            \ if executable("cc-build") |
+            \     set makeprg=cc-build  |
+            \ endif
+
+" Run make with <leader>m
+nmap <leader>m :make<CR>
 
 " Spell check for git commit messages and markdown
 autocmd FileType gitcommit setlocal spell
