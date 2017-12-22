@@ -4,17 +4,9 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Folding settings
-set foldmethod=indent
-set foldnestmax=10
-set nofoldenable
-set foldlevel=1
-
 " Make backspace work properly
 set backspace=indent,eol,start
-
-" Statusbar options
-set showcmd
+" Statusbar options set showcmd
 set laststatus=2
 set statusline=%<%n:%f\ %h%m%r%y%=%-25.(%{b:git_branch}\ \ \ %l/%L\ %c%V%)\ %P
 
@@ -22,14 +14,15 @@ set statusline=%<%n:%f\ %h%m%r%y%=%-25.(%{b:git_branch}\ \ \ %l/%L\ %c%V%)\ %P
 set hlsearch
 set incsearch
 
-" Show relative line numbers in normal mode and disable them in insert mode
+" Better line joining
+set formatoptions+=j
+
+" Show line numbers
 set number
-set relativenumber
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
 
 " Show matching brackets
 set showmatch
+set matchpairs+=<:>
 
 " Hide closed buffers
 set hidden
@@ -39,7 +32,6 @@ set dictionary=/usr/share/dict/words
 
 " Better command completion
 set wildmenu
-set wildignore+=*/build/*
 set wildignorecase
 set ignorecase
 set smartcase
@@ -68,8 +60,8 @@ endif
 
 " Highlight the 81st column
 if exists('+colorcolumn')
-    set textwidth=80
-    set colorcolumn=+1
+    set colorcolumn=81
+    set formatoptions-=tc
     hi ColorColumn ctermbg=9
 endif
 
@@ -221,7 +213,7 @@ omap <leader><tab> <plug>(fzf-maps-o)
 if has("macunix")
     set rtp+=/Users/ronmrdechai/.homebrew/opt/fzf
 endif
-let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_history_dir = '$HOME/.local/share/fzf-history'
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'window': 'belowright 10split enew' }
 let g:fzf_action = {
@@ -292,7 +284,7 @@ autocmd FileType gitcommit setlocal spell
 autocmd FileType markdown  setlocal spell
 
 " Use ~/.vim/local for local plugins
-let &rtp .= ',~/.vim/local/'
+set rtp+=$HOME/.vim/local/
 
 " Enable syntax highlighting
 filetype plugin indent on
