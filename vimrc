@@ -33,6 +33,8 @@ set dictionary=/usr/share/dict/words
 " Better command completion
 set wildmenu
 set wildignorecase
+
+" Better casing
 set ignorecase
 set smartcase
 
@@ -206,6 +208,7 @@ nnoremap ,b :Buffers<CR>
 nnoremap ,t :Tags<CR>
 nnoremap ,m :Marks<CR>
 nnoremap ,a :Ag<CR>
+nnoremap ,h :Helptags<CR>
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
@@ -279,8 +282,13 @@ autocmd FileType c,cpp
             \     set makeprg=cc-build  |
             \ endif
 
-" Run make with <leader>m
-nmap <leader>m :make<CR>
+" Run make with gm<letter>
+nmap gmb :make<CR>
+nmap gmc :make clean<CR>
+nmap gmt :make test<CR>
+
+" Open quickfix window after failed make
+autocmd QuickFixCmdPost [^l]* cwindow
 
 " Spell check for git commit messages and markdown
 autocmd FileType gitcommit setlocal spell

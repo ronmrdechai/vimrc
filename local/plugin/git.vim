@@ -6,3 +6,9 @@ command Gad                call git#stage()
 command GitAdd             call git#stage()
 
 autocmd BufEnter * call git#set_branch()
+
+nmap gGa :Gad<CR>
+nmap gGd :Gdf<CR>
+nmap gGo :G co<CR>
+nmap gGr :G reset<CR>
+nmap gGc :G ci -m ""<Left><CR>
