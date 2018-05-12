@@ -250,6 +250,10 @@ for letter in ['a', 'c', 'd', 'e', 'f', 'g', 'i', 's', 't']
                 \ letter)
 endfor
 
+" Easy align
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
 " Map function keys to <leader>#
 let i=0
 while i<=9
