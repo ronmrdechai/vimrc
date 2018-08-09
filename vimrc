@@ -50,16 +50,6 @@ endif
 " Move viminfo into .vim
 set viminfo+=n$HOME/.vim/viminfo
 
-" Use ripgrep/ag/ack for grepping when available
-if executable('rg')
-    set grepprg=rg\ --vimgrep
-elseif executable('ag')
-    set grepprg=ag\ --vimgrep
-elseif executable('ack')
-    set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-endif
-
 " Highlight the 81st column
 if exists('+colorcolumn')
     set colorcolumn=81
@@ -68,9 +58,7 @@ if exists('+colorcolumn')
 endif
 
 " Make vim show the background properly in tmux
-if exists("$TMUX")
-    set t_ut=
-endif
+set t_ut=
 
 " Wrap escape sequences when in tmux
 function TmuxEscape(string)
@@ -141,9 +129,7 @@ map <silent><F2> :Lexplore<CR>
 " Set <leader> to space, it's much easier to mash this way
 let mapleader=" "
 
-" General mappings
-nmap ZA :qa<CR>
-nmap ZW :wa<Bar>q<CR>
+" Fix Y
 nmap Y y$
 
 " Readline-like command-line mode
@@ -175,40 +161,19 @@ inoremap <silent><C-k> <Esc>:m .-2<CR>==gi
 vnoremap <silent><C-j> :m '>+1<CR>gv=gv
 vnoremap <silent><C-k> :m '<-2<CR>gv=gv
 
-" CamelCase motions:
-nnoremap <silent><leader>w :<C-u>call
-            \ search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)
-            \\<Bar>\%$','W')<CR>
-nnoremap <silent><leader>b :<C-u>call
-            \ search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)
-            \\<Bar>\%^','bW')<CR>
-onoremap <silent><leader>w :<C-u>call
-            \ search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)
-            \\<Bar>\%$','W')<CR>
-onoremap <silent><leader>b :<C-u>call
-            \ search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)
-            \\<Bar>\%^','bW')<CR>
-
-" Toggle paste mode with <leader>p
+" Toggle stuff
 nnoremap <leader>p :set paste! paste?<CR>
-
-" Toggle spell mode with <leader>s
 nnoremap <leader>s :set spell! spell?<CR>
 
-" Stop highlighting things with <leader>h
+" Stop highlighting
 nnoremap <leader>h :nohlsearch<CR>
-
-" Search with vimgrep
-nnoremap <leader>g :vim  **/*.%:e<C-b><Right><Right><Right><Right>
 
 " FZF
 nnoremap ,f :Files<CR>
 nnoremap ,g :GFiles<CR>
 nnoremap ,b :Buffers<CR>
-nnoremap ,t :Tags<CR>
 nnoremap ,m :Marks<CR>
 nnoremap ,a :Ag<CR>
-nnoremap ,h :Helptags<CR>
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
@@ -280,6 +245,7 @@ autocmd FileType python
 
 " Options for c and cpp
 autocmd FileType c,cpp
+            \ setlocal complete-=i |
             \ cabbrev <buffer> `c %:r.cc |
             \ cabbrev <buffer> `h %:r.h  |
             \ if executable("cc-build") |
@@ -312,35 +278,6 @@ colorscheme gruvbox
 
 " Write to file as root with "WRITE"
 command WRITE %!sudo tee > /dev/null %
-
-" Generate tags for specified directory
-function GenerateTags(...)
-    if a:0 == 0
-        let l:dir = '.'
-    else
-        let l:dir = a:1
-    endif
-    if executable("exctags")
-        let l:exe = "exctags"
-    else
-        let l:exe = "ctags"
-    endif
-    execute "!" . l:exe . " -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=*.txt" . l:dir
-endfunction
-command -nargs=? GenerateTags call GenerateTags(<f-args>)
-map <F10> :GenerateTags<CR>
-
-" Generate cscope for specified directory
-function GenerateCScope(...)
-    if a:0 == 0
-        let l:dir = '.'
-    else
-        let l:dir = a:1
-    endif
-    execute "!cscope -b -R " . l:dir
-endfunction
-command -nargs=? GenerateCScope call GenerateCScope(<f-args>)
-map <F11> :GenerateCScope<CR>
 
 " Basic template support
 augroup templates
