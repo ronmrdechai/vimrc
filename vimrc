@@ -180,7 +180,10 @@ omap <leader><tab> <plug>(fzf-maps-o)
 
 if has("macunix")
     set rtp+=/Users/ronmrdechai/.homebrew/opt/fzf
+elseif isdirectory(expand("$HOME/.fzf"))
+    set rtp+=$HOME/.fzf
 endif
+
 let g:fzf_history_dir = '$HOME/.local/share/fzf-history'
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'window': 'belowright 10split enew' }
