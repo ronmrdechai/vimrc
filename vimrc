@@ -62,7 +62,7 @@ set t_ut=
 
 " Wrap escape sequences when in tmux
 function TmuxEscape(string)
-    if !exists("$TMUX")
+    if !(exists("$TMUX") || $TERM == "screen-256color")
         return a:string
     endif
     let tmux_start = "\<Esc>Ptmux;"
@@ -101,7 +101,7 @@ if has('unix')
 endif
 
 " If tmux is running, activate focus events and save on focus lost
-if exists("$TMUX")
+if exists("$TMUX") || $TERM == "screen-256color"
     let &t_ti .= "\<Esc>[?1004h"
     let &t_te .= "\<Esc>[?1004l"
 
