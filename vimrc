@@ -73,7 +73,7 @@ function TmuxEscape(string)
 endfunction
 
 " Make vim change the cursor when in insert mode in various terminals.
-if $TERM_PROGRAM == "iTerm.app" || exists("$KONSOLE_DBUS_SERVICE")
+if exists("$ITERM_SESSION_ID") || exists("$KONSOLE_DBUS_SERVICE")
     let &t_SI = TmuxEscape("\<Esc>]50;CursorShape=1\x7")
     let &t_EI = TmuxEscape("\<Esc>]50;CursorShape=0\x7")
     let &t_SR = TmuxEscape("\<Esc>]50;CursorShape=2\x7")
@@ -265,6 +265,7 @@ autocmd QuickFixCmdPost [^l]* cwindow
 
 " Spell check for git commit messages and markdown
 autocmd FileType gitcommit setlocal spell
+autocmd FileType hgcommit  setlocal spell
 autocmd FileType markdown  setlocal spell
 
 " Use ~/.vim/local for local plugins
