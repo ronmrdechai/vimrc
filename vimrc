@@ -86,8 +86,8 @@ endif
 " TODO: Find a better condition for this
 if has('unix')
     " Enable bracketed paste mode when entering vim
-    let &t_ti .= "\<Esc>[?2004h"
-    let &t_te .= "\<Esc>[?2004l"
+    let &t_ti .= TmuxEscape("\<Esc>[?2004h")
+    let &t_te .= TmuxEscape("\<Esc>[?2004l")
     function PasteStart(ret)
         set pastetoggle=<Esc>[201~
         set paste
@@ -102,8 +102,8 @@ endif
 
 " If tmux is running, activate focus events and save on focus lost
 if exists("$TMUX") || $TERM == "screen-256color"
-    let &t_ti .= "\<Esc>[?1004h"
-    let &t_te .= "\<Esc>[?1004l"
+    let &t_ti .= TmuxEscape("\<Esc>[?1004h")
+    let &t_te .= TmuxEscape("\<Esc>[?1004l")
 
     nnoremap <silent><special> <Esc>[O :silent doautocmd FocusLost %<CR>
     nnoremap <silent><special> <Esc>[I :silent doautocmd FocusGained %<CR>
