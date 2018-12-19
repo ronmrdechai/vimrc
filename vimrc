@@ -180,6 +180,8 @@ omap <leader><tab> <plug>(fzf-maps-o)
 
 if has("macunix")
     set rtp+=/Users/ronmrdechai/.homebrew/opt/fzf
+elseif isdirectory(expand("$HOME/pkg"))
+    set rtp+=$HOME/pkg/share/fzf
 elseif isdirectory(expand("$HOME/.fzf"))
     set rtp+=$HOME/.fzf
 endif
