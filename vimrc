@@ -168,6 +168,9 @@ nnoremap <leader>s :set spell! spell?<CR>
 " Stop highlighting
 nnoremap <leader>h :nohlsearch<CR>
 
+" Show TODO list
+nnoremap <leader>t :vim TODO %<CR>
+
 " FZF
 nnoremap ,f :Files<CR>
 nnoremap ,g :GFiles<CR>
@@ -276,6 +279,13 @@ set rtp+=$HOME/.vim/local/
 " Enable syntax highlighting
 filetype plugin indent on
 syntax on
+
+" Fix Java syntax
+let java_highlight_java_lang_ids=1
+let java_highlight_functions="style"
+let java_javascript=1
+let java_css=1
+let java_vb=1
 
 " Set the colorscheme
 set background=dark
