@@ -52,7 +52,7 @@ set viminfo+=n$HOME/.vim/viminfo
 
 " Highlight the 81st column
 if exists('+colorcolumn')
-  set colorcolumn=81
+  set colorcolumn=81,101
   set formatoptions-=tc
   hi ColorColumn ctermbg=9
 endif
