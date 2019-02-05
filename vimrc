@@ -260,8 +260,9 @@ autocmd FileType c,cpp
       \     set makeprg=cc-build  |
       \ endif
 
-" BUCK file syntax highlighting
+" Python DSL file syntax highlighting
 autocmd BufNewFile,BufRead BUCK setlocal filetype=python
+autocmd BufNewFile,BufRead *.cinc setlocal filetype=python
 
 " Run make with gm<letter>
 nmap gmb :make<CR>
