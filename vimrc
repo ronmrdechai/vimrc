@@ -117,15 +117,6 @@ if exists("$TMUX") || $TERM == "screen-256color"
   au FocusLost * silent! wa
 endif
 
-" netrw options
-let g:netrw_winsize = -28
-let g:netrw_liststyle = 3
-let g:netrw_sort_sequence = '[\/]$,*'
-let g:netrw_browse_split = 4
-let g:netrw_dirhistmax = 0
-let g:netrw_banner = 0
-map <silent><F2> :Lexplore<CR>
-
 " Set <leader> to space, it's much easier to mash this way
 let mapleader=" "
 
@@ -213,15 +204,6 @@ let g:fzf_colors =
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
       \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
-" cscope
-set cscopetag
-nnoremap <leader>ch :cscope h<CR>
-for letter in ['a', 'c', 'd', 'e', 'f', 'g', 'i', 's', 't']
-  exe printf('nnoremap <leader>c%s :cs find %s <C-r>=expand("<cword>")<CR><CR>',
-        \ letter,
-        \ letter)
-endfor
 
 " Easy align
 nmap ga <Plug>(EasyAlign)
