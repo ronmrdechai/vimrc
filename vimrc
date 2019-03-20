@@ -73,14 +73,16 @@ function TmuxEscape(string)
 endfunction
 
 " Make vim change the cursor when in insert mode in various terminals.
-if exists("$ITERM_SESSION_ID") || exists("$KONSOLE_DBUS_SERVICE")
-  let &t_SI = TmuxEscape("\<Esc>]50;CursorShape=1\x7")
-  let &t_EI = TmuxEscape("\<Esc>]50;CursorShape=0\x7")
-  let &t_SR = TmuxEscape("\<Esc>]50;CursorShape=2\x7")
-elseif $TERM_PROGRAM == "Apple_Terminal" || $COLORTERM == "gnome-terminal"
-  let &t_SI = TmuxEscape("\<Esc>[5 q")
-  let &t_EI = TmuxEscape("\<Esc>[0 q")
-  let &t_SR = TmuxEscape("\<Esc>[4 q")
+if exists("&t_SI") && exists("&t_EI") && exists("&t_SR")
+  if exists("$ITERM_SESSION_ID") || exists("$KONSOLE_DBUS_SERVICE")
+    let &t_SI = TmuxEscape("\<Esc>]50;CursorShape=1\x7")
+    let &t_EI = TmuxEscape("\<Esc>]50;CursorShape=0\x7")
+    let &t_SR = TmuxEscape("\<Esc>]50;CursorShape=2\x7")
+  elseif $TERM_PROGRAM == "Apple_Terminal" || $COLORTERM == "gnome-terminal"
+    let &t_SI = TmuxEscape("\<Esc>[5 q")
+    let &t_EI = TmuxEscape("\<Esc>[0 q")
+    let &t_SR = TmuxEscape("\<Esc>[4 q")
+  endif
 endif
 
 " TODO: Find a better condition for this
@@ -243,7 +245,8 @@ autocmd FileType c,cpp
       \ endif
 
 " Python DSL file syntax highlighting
-autocmd BufNewFile,BufRead BUCK setlocal filetype=python
+autocmd BufNewFile,BufRead BUCK setlocal filetype=bzl
+autocmd BufNewFile,BufRead TARGETS setlocal filetype=bzl
 autocmd BufNewFile,BufRead *.cinc setlocal filetype=python
 
 " Run make with gm<letter>
@@ -274,9 +277,13 @@ let java_css=1
 let java_vb=1
 
 " Set the colorscheme
-set background=dark
-let g:gruvbox_italic=0
-colorscheme gruvbox
+try
+  set background=dark
+  let g:gruvbox_italic=0
+  colorscheme gruvbox
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme ron
+endtry
 
 " Write to file as root with "WRITE"
 command WRITE %!sudo tee > /dev/null %
