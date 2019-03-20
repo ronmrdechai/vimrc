@@ -8,7 +8,7 @@ set tabstop=8
 set backspace=indent,eol,start
 " Statusbar options set showcmd
 set laststatus=2
-set statusline=%<%n:%f\ %h%m%r%y%=%-25.(%{b:git_branch}\ \ \ %l/%L\ %c%V%)\ %P
+set statusline=%<%n:%f\ %h%m%r%y%=%-15.(%l/%L\ %c%V%)\ %P
 
 " Better searching
 set hlsearch
