@@ -102,23 +102,6 @@ if has('unix')
   cnoremap <special><expr><Esc>[201~ ""
 endif
 
-" If tmux is running, activate focus events and save on focus lost
-if exists("$TMUX") || $TERM == "screen-256color"
-  let &t_ti .= TmuxEscape("\<Esc>[?1004h")
-  let &t_te .= TmuxEscape("\<Esc>[?1004l")
-
-  nnoremap <silent><special> <Esc>[O :silent doautocmd FocusLost %<CR>
-  nnoremap <silent><special> <Esc>[I :silent doautocmd FocusGained %<CR>
-  onoremap <silent><special> <Esc>[O <Esc>:silent doautocmd FocusLost %<CR>
-  onoremap <silent><special> <Esc>[I <Esc>:silent doautocmd FocusGained %<CR>
-  vnoremap <silent><special> <Esc>[O <Esc>:silent doautocmd FocusLost %<CR>gv
-  vnoremap <silent><special> <Esc>[I <Esc>:silent doautocmd FocusGained %<CR>gv
-  inoremap <silent><special> <Esc>[O <C-O>:silent doautocmd FocusLost %<CR>
-  inoremap <silent><special> <Esc>[I <C-O>:silent doautocmd FocusGained %<CR>
-
-  au FocusLost * silent! wa
-endif
-
 " Set <leader> to space, it's much easier to mash this way
 let mapleader=" "
 
@@ -210,18 +193,6 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
 " Easy align
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
-
-" Map function keys to <leader>#
-let i=0
-while i<=9
-  exe printf('nmap <leader>%d <F%d>', i, i)
-  let i+=1
-endwhile
-let i=0
-while i<=6
-  exe printf('nmap <leader><leader>%d <F1%d>', i, i)
-  let i+=1
-endwhile
 
 " Options for perl
 autocmd FileType perl
