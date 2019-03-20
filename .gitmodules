@@ -25,3 +25,6 @@
 [submodule "pack/packages/start/vim-exchange"]
 	path = pack/packages/start/vim-exchange
 	url = https://github.com/tommcdo/vim-exchange.git
+[submodule "pack/packages/start/vim-repeat"]
+	path = pack/packages/start/vim-repeat
+	url = git@github.com:tpope/vim-repeat.git
