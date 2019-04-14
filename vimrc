@@ -85,23 +85,6 @@ if exists("&t_SI") && exists("&t_EI") && exists("&t_SR")
   endif
 endif
 
-" TODO: Find a better condition for this
-if has('unix')
-  " Enable bracketed paste mode when entering vim
-  let &t_ti .= TmuxEscape("\<Esc>[?2004h")
-  let &t_te .= TmuxEscape("\<Esc>[?2004l")
-  function PasteStart(ret)
-    set pastetoggle=<Esc>[201~
-    set paste
-    return a:ret
-  endfunction
-  " ':set paste' automatically when pasting
-  inoremap <special><expr><Esc>[200~ PasteStart("")
-  noremap  <special><expr><Esc>[200~ PasteStart("0i")
-  cnoremap <special><expr><Esc>[200~ ""
-  cnoremap <special><expr><Esc>[201~ ""
-endif
-
 " Set <leader> to space, it's much easier to mash this way
 let mapleader=" "
 
@@ -228,10 +211,13 @@ nmap gmt :make test<CR>
 " Open quickfix window after failed make
 autocmd QuickFixCmdPost [^l]* cwindow
 
-" Spell check for git commit messages and markdown
+" Spell check for commit messages and markdown
 autocmd FileType gitcommit setlocal spell
 autocmd FileType hgcommit  setlocal spell
 autocmd FileType markdown  setlocal spell
+
+" Fix last mistake in insert mode
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Use ~/.vim/local for local plugins
 set rtp+=$HOME/.vim/local/
