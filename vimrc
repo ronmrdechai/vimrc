@@ -135,7 +135,7 @@ nnoremap ,f :Files<CR>
 nnoremap ,g :GFiles<CR>
 nnoremap ,b :Buffers<CR>
 nnoremap ,m :Marks<CR>
-nnoremap ,a :Ag<CR>
+nnoremap ,r :Rg<CR>
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
