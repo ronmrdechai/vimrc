@@ -211,10 +211,11 @@ nmap gmt :make test<CR>
 " Open quickfix window after failed make
 autocmd QuickFixCmdPost [^l]* cwindow
 
-" Spell check for commit messages and markdown
+" Spell check for commit messages and documentation
 autocmd FileType gitcommit setlocal spell
 autocmd FileType hgcommit  setlocal spell
 autocmd FileType markdown  setlocal spell
+autocmd FileType text      setlocal spell
 
 " Fix last mistake in insert mode
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
