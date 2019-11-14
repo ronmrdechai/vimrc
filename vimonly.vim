@@ -202,7 +202,3 @@ augroup templates
   " Parse special text in the templates after the read
   autocmd BufNewFile * silent %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge | execute "normal gg"
 augroup END
-
-" Call Biggrep
-command! -bang -nargs=* Bg
-nnoremap <silent>,g :Bg<CR>
