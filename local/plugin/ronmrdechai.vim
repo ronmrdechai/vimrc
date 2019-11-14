@@ -20,30 +20,30 @@ if !exists("g:ronmrdechai#fbhome")
 endif
 
 function! ronmrdechai#biggrep(preview, ...)
-  let repo_path = system('hg root')
-  if v:shell_error != 0
-    echoerr 'Not in Mercurial repository'
-    return
-  endif
+  let file_path = expand('%:p:h')
 
   let repo_abbrev = 'z'
-  if repo_path =~# 'configerator'
+  if file_path =~# 'configerator'
     let repo_abbrev = 'c'
-  elseif repo_path =~# 'www'
+  elseif file_path =~# 'www'
     let repo_abbrev = 't'
-  elseif repo_path =~# 'fbcode'
+  elseif file_path =~# 'fbcode'
     let repo_abbrev = 'f'
-  elseif repo_path =~# 'fbandroid'
+  elseif file_path =~# 'fbandroid'
     let repo_abbrev = 'a'
-  elseif repo_path =~# 'opsfiles'
+  elseif file_path =~# 'opsfiles'
     let repo_abbrev = 'o'
+  endif
+
+  let color_arg = '--color=on '
+  if has("macunix")
+    let color_arg = ''
   endif
 
   let argstring = len(a:000) == 0 ? 
         \ input(toupper(repo_abbrev) . 'bgs: ') : shellescape(join(a:000, ' '))
-  let command = repo_abbrev . 'bgs --color=on '. argstring .
-        \ '| sed "s,^[^/]*/,,"' .
-        \ '| sed "s#^#$(hg root)/#g"'
+  let command = repo_abbrev . 'bgs ' . color_arg . argstring .
+        \ '| sed "s,^[^/]*/,," | sed "s#^#$(hg root)/#g"'
   let preview = a:preview ?
         \ fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('up:55%:hidden', '?')
   call fzf#vim#grep(command, 1, preview, a:preview)
