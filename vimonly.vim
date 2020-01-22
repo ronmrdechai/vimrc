@@ -202,3 +202,5 @@ augroup templates
   " Parse special text in the templates after the read
   autocmd BufNewFile * silent %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge | execute "normal gg"
 augroup END
+
+source ~/.vim/lsp.vim

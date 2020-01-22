@@ -28,3 +28,12 @@
 [submodule "pack/packages/start/vim-repeat"]
 	path = pack/packages/start/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
+[submodule "pack/packages/start/vim-lsp"]
+	path = pack/packages/start/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp.git
+[submodule "pack/packages/start/async.vim"]
+	path = pack/packages/start/async.vim
+	url = https://github.com/prabirshrestha/async.vim.git
+[submodule "pack/packages/start/vim-hack"]
+	path = pack/packages/start/vim-hack
+	url = https://github.com/hhvm/vim-hack.git
