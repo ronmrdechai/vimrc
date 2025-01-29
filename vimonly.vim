@@ -81,7 +81,11 @@ xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
 if has("macunix")
-  set rtp+=/Users/ronmrdechai/.homebrew/opt/fzf
+  if isdirectory(expand("~/.homebrew"))
+    set rtp+=/Users/ronmrdechai/.homebrew/opt/fzf
+  elseif isdirectory("/opt/local")
+    set rtp+=/opt/local/share/fzf/vim
+  endif
 elseif isdirectory(expand("$HOME/pkg"))
   set rtp+=$HOME/pkg/share/fzf
 elseif isdirectory(expand("$HOME/.fzf"))

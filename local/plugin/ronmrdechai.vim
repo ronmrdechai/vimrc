@@ -80,9 +80,9 @@ nnoremap ,g :Biggrep<CR>
 nnoremap ,,g :Biggrep <C-r><C-w><CR>
 
 if has("macunix")
-  nnoremap <leader>o :OpenInDiffusion<CR>
-  vnoremap <leader>o :'<,'>OpenInDiffusion<CR>
+  nnoremap ,o :OpenInDiffusion<CR>
+  vnoremap ,o :'<,'>OpenInDiffusion<CR>
 else
-  nnoremap <leader>o :DiffusionLink<CR>
-  vnoremap <leader>o :'<,'>DiffusionLink<CR>
+  nnoremap ,o :DiffusionLink<CR>
+  vnoremap ,o :'<,'>DiffusionLink<CR>
 endif
